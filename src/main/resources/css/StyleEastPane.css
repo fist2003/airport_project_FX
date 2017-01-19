@@ -1,0 +1,140 @@
+#eastPane{
+    -fx-background-color: lawngreen;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 425;
+    -fx-pref-height: 425;
+}
+
+.combo-box{
+    -fx-background-color: #d8d9d8;
+    -fx-font-size: 13;
+    -fx-pref-height: 15;
+    -fx-pref-width: 125;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+
+}
+.combo-box .list-cell
+{
+    -fx-background-color: #d8d9d8;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+
+
+
+#northEastPane{
+    -fx-background-color: white;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 130;
+    -fx-pref-height: 130;
+    -fx-max-height: 130;
+}
+
+#topEastPane{
+    -fx-background-color: white;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 50;
+    -fx-pref-height: 50;
+    -fx-max-height: 50;
+}
+
+#topEastPane Button{
+    -fx-background-color: #d8d9d8;
+    -fx-padding: 6 15 6 15;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: black;
+    -fx-min-width: 207;
+    -fx-pref-width: 207;
+    -fx-max-width: 1000;
+    -fx-min-height: 50;
+    -fx-pref-height: 50;
+    -fx-max-height: 50;
+}
+
+#topEastPane Button:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 100% to 0% 93%, rgba(152, 26, 16, 0.73) 0%, #981a10 100%),
+            #981a10,
+            #981a10
+
+}
+#topEastPane Button:pressed {
+    -fx-padding: 5 14 5 14;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+    -fx-background-color: #981a10;
+}
+
+#redLineEastPane{
+    -fx-background-color: #981a10;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 5;
+    -fx-pref-height: 5;
+    -fx-max-height: 5;
+}
+
+#optionEastPane{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 75;
+    -fx-pref-height: 75;
+    -fx-max-height: 75;
+}
+
+#scheduleEastPane {
+    -fx-background-color: white;
+    -fx-min-width: 630;
+    -fx-pref-width: 630;
+    -fx-min-height: 250;
+    -fx-pref-height: 250;
+}
+
+#bottomEastPane{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 50;
+    -fx-pref-height: 50;
+    -fx-max-height: 50;
+}
+
+
+.table-view {
+    -fx-base: white;
+    -fx-control-inner-background: white;
+    -fx-background-color: white;
+   /* -fx-table-cell-border-color: red;*/
+
+}
+
+.table-view .column-header .label {
+    -fx-background-color: white;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 13px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+}
+
+.table-view .column-header {
+    -fx-background-color: white;
+}
+
+.table-view .table-column {
+    -fx-alignment: CENTER;
+    -fx-background-color: white;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+    -fx-pref-height: 30;
+
+}
+

@@ -1,0 +1,47 @@
+#mainPane{
+    -fx-background-image: url("background_evening.jpg");
+    -fx-background-size: cover;
+    -fx-min-width: 1000;
+    -fx-pref-width: 1000;
+    -fx-min-height: 550;
+    -fx-pref-height: 550;
+}
+
+#topPane{
+    -fx-background-color: #2A2B2A;
+    -fx-min-width: 800;
+    -fx-pref-width: 800;
+    -fx-min-height: 25;
+    -fx-pref-height: 25;
+    -fx-max-height: 25;
+}
+
+#centerPane{
+    -fx-background-image: url("city.png");
+    -fx-background-position: bottom,center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: auto;
+    -fx-min-width: 800;
+    -fx-pref-width: 800;
+    -fx-min-height: 75;
+    -fx-pref-height: 75;
+    -fx-max-height: 75;
+}
+
+#airportNamePane{
+    -fx-background-color: #ffffff;
+    -fx-min-width: 800;
+    -fx-pref-width: 800;
+    -fx-min-height: 25;
+    -fx-pref-height: 25;
+    -fx-max-height: 25;
+}
+
+#airportNamePane Label {
+    -fx-font-size: 20px;
+    -fx-font-family: "Helvetica";
+    -fx-font-weight: lighter;
+    -fx-fill: #000000;
+}
+
+

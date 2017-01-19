@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/StyleMainPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <padding>
+      <Insets left="100.0" right="100.0" />
+   </padding>
+   <children>
+      <FlowPane id="topPane" prefHeight="200.0" prefWidth="200.0" />
+      <FlowPane id="centerPane" prefHeight="200.0" prefWidth="200.0" />
+      <FlowPane id="airportNamePane" alignment="CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0" rowValignment="BASELINE">
+         <children>
+            <Label text="Odessa " />
+            <Circle fill="#981a10" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label text=" International " />
+            <Circle fill="#981a10" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label text=" Airport" />
+         </children></FlowPane>
+      <Pane id="bottomPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>

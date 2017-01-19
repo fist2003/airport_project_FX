@@ -1,0 +1,42 @@
+#bottomPane {
+    -fx-background-color: white;
+    -fx-min-width: 800;
+    -fx-pref-width: 800;
+    -fx-min-height: 425;
+    -fx-pref-height: 425;
+}
+
+#westPane{
+    -fx-background-color: white;
+    -fx-min-width: 150;
+    -fx-pref-width: 150;
+    -fx-max-width: 150;
+    -fx-min-height: 425;
+    -fx-pref-height: 425;
+}
+
+#westPane Button{
+    -fx-background-color: #2A2B2A;
+    -fx-padding: 6 15 6 15;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-font-weight: lighter;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+    -fx-pref-width: 150;
+    -fx-pref-height: 50;
+}
+
+#westPane Button:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 100% to 0% 93%, rgba(92, 89, 90, 0.73) 0%, #242424 100%),
+            #242424,
+            #300909
+
+}
+#westPane Button:pressed {
+    -fx-padding: 5 14 5 14;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane id="scheduleEastPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/StyleEastPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.model.PricesTableModel">
+   <center>
+      <TableView fx:id="pricesTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="columnNumber" prefWidth="75.0" text="NUMBER" />
+          <TableColumn fx:id="columnDirection" prefWidth="75.0" text="DIRECTION" />
+            <TableColumn fx:id="columnDateDepart" prefWidth="75.0" text="DATE DEPART" />
+            <TableColumn fx:id="columnTimeDepart" prefWidth="75.0" text="TIME DEPART" />
+            <TableColumn fx:id="columnDateArrive" prefWidth="75.0" text="DATE ARRIVE" />
+            <TableColumn fx:id="columnTimeArrive" prefWidth="75.0" text="TIME ARRIVE" />
+            <TableColumn fx:id="columnPrice" prefWidth="75.0" text="PRICE USD" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </center>
+</BorderPane>
