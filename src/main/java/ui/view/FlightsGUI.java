@@ -22,9 +22,6 @@ public class FlightsGUI extends MainPage {
     public static LocalDate getShoowingDate() {return shoowingDate;}
     public static void setShoowingDate(LocalDate shoowingDate) {FlightsGUI.shoowingDate = shoowingDate;}
 
- /*   @FXML
-    private VBox eastPane;*/
-
     private BorderPane tablePane;
 
     public VBox getEastPane() {
@@ -81,10 +78,10 @@ public class FlightsGUI extends MainPage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       /* tablePane = new DepartureFlightsTableModel().getTablePane(0,getShoowingDate());
+        tablePane = getEmptyTablePane(tablePane);
         pane.getChildren().remove(1);
         pane.getChildren().add(1,tablePane);
-        pane.setVgrow(tablePane, Priority.ALWAYS);*/
+        pane.setVgrow(tablePane, Priority.ALWAYS);
         eastPane.getChildren().add(pane);
         eastPane.setVgrow(pane, Priority.ALWAYS);
     }

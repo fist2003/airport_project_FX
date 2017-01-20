@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import ui.model.PricesTableModel;
 
 import java.io.IOException;
 
@@ -62,6 +63,17 @@ public class MainPage extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    protected BorderPane getEmptyTablePane(BorderPane tablePane){
+        String tablePaneFxmlFile = "/fxml/emptyTablePane.fxml";
+        FXMLLoader loaderTablePane = new FXMLLoader();
+        try {
+            tablePane = (BorderPane) loaderTablePane.load(getClass().getResourceAsStream(tablePaneFxmlFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return tablePane;
     }
 
 }

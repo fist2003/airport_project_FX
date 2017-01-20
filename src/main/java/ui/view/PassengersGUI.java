@@ -40,10 +40,10 @@ public class PassengersGUI extends MainPage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       /* tablePane = new ArrivalFlightsTableModel().getTablePane(0,shoowingDate);
+        tablePane = getEmptyTablePane(tablePane);
         pane.getChildren().remove(1);
         pane.getChildren().add(1,tablePane);
-        pane.setVgrow(tablePane, Priority.ALWAYS);*/
+        pane.setVgrow(tablePane, Priority.ALWAYS);
         if (eastPane != null){
             eastPane.getChildren().add(pane);
             eastPane.setVgrow(pane, Priority.ALWAYS);}
@@ -61,11 +61,10 @@ public class PassengersGUI extends MainPage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*
-        tablePane = new DepartureFlightsTableModel().getTablePane(0,getShoowingDate());
+        tablePane = getEmptyTablePane(tablePane);
         pane.getChildren().remove(1);
         pane.getChildren().add(1,tablePane);
-        pane.setVgrow(tablePane, Priority.ALWAYS);*/
+        pane.setVgrow(tablePane, Priority.ALWAYS);
         eastPane.getChildren().add(pane);
         eastPane.setVgrow(pane, Priority.ALWAYS);
     }
