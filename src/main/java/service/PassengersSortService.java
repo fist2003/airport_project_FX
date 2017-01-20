@@ -1,6 +1,5 @@
 package service;
 
-import javafx.beans.property.SimpleStringProperty;
 import model.Flights;
 import model.Passengers;
 
@@ -61,17 +60,7 @@ public class PassengersSortService extends ServiceAbstract{
 
     public ArrayList<Passengers> makeListPassengersSorted(String typeValue,Object directionValue,Object dateValue, Object timeValue,Object flightNumberValue){
         ArrayList<Flights> listFlights = makeListFlightsSorted(typeValue, directionValue, dateValue, timeValue, flightNumberValue);
-        ArrayList<Passengers> listAllPassengers = new PassengersService().getAllService();
-        ArrayList<Passengers> listPassengersSorted = new ArrayList<Passengers>();
-        for(Flights flight:listFlights){
-            for(Passengers passenger:listAllPassengers){
-                if(flight.getId() == passenger.getFlight_id()){
-                    passenger.setFlight_number(flight.getNumber());
-                    listPassengersSorted.add(passenger);
-                }
-            }
-        }
-        return listPassengersSorted;
+        return makeListPassengersFromFlightsList(listFlights);
     }
 
 

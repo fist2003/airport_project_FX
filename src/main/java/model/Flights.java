@@ -84,7 +84,7 @@ public class Flights extends Entity{
 
     public Integer getPriceBusiness() {return priceBusiness.get();}
     public SimpleIntegerProperty priceBusinessProperty() {return priceBusiness;}
-    public void setPriceBusiness(Integer priceBusiness) {this.priceBusiness = new SimpleIntegerProperty(priceBusiness);}
+    public void setPriceBusiness(int priceBusiness) {this.priceBusiness = new SimpleIntegerProperty(priceBusiness);}
 
     public int getAirplane_id() {return airplane_id.get();}
     public SimpleIntegerProperty airplane_idProperty() {return airplane_id;}

@@ -88,7 +88,6 @@ public class FlightsGUI extends MainPage {
 
 
     protected void loadArrivalTable(int sliderValue,LocalDate datevalue){
-
         tablePane = new ArrivalFlightsTableModel().getTablePane(sliderValue,datevalue);
         eastPane.getChildren().remove(1);
         eastPane.getChildren().add(1,tablePane);

@@ -5,36 +5,28 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import model.Passengers;
-import service.PassengersSortService;
 import ui.model.PassengersTableModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by slavik on 19.01.2017.
+ * Created by slavik on 20.01.2017.
  */
-public class PassengersGUI extends MainPage {
-    public PassengersGUI(){}
+public class SearchPassengersGUI extends MainPage {
 
-    protected PassengersSortService instPassengersSortService = new PassengersSortService();
-
-    private String choosedTypeStr;
-
-    public String getChoosedTypeStr() {return choosedTypeStr;}
-
-    protected void setChoosedTypeStr(String choosedTypeStr) {this.choosedTypeStr = choosedTypeStr;}
+    public SearchPassengersGUI(){}
 
     public VBox getEastPane() {
-        loadDepartPassengers();
+        loadSearchPassengersByPersonalInf();
         return eastPane;
     }
 
     private BorderPane tablePane;
 
-    protected void loadDepartPassengers(){
+    protected void loadSearchPassengersByPersonalInf(){
         if (eastPane != null){eastPane.getChildren().clear();}
-        String eastPaneFxmlFile = "/fxml/passengers/showPassengersDepart.fxml";
+        String eastPaneFxmlFile = "/fxml/passengers/searchPassengersByPersonalInformation.fxml";
         FXMLLoader loaderEastPane = new FXMLLoader();
         VBox pane = new VBox();
         try {
@@ -50,12 +42,11 @@ public class PassengersGUI extends MainPage {
             eastPane.getChildren().add(pane);
             eastPane.setVgrow(pane, Priority.ALWAYS);}
         else eastPane = pane;
-
     }
 
-    protected void loadArrivalPassengers(){
+    protected void loadSearchPassengersByFlightInf(){
         eastPane.getChildren().clear();
-        String eastPaneFxmlFile = "/fxml/passengers/showPassengersArrival.fxml";
+        String eastPaneFxmlFile = "/fxml/passengers/searchPassengersByFlightInformation.fxml";
         FXMLLoader loaderEastPane = new FXMLLoader();
         VBox pane = new VBox();
         try {
@@ -71,12 +62,10 @@ public class PassengersGUI extends MainPage {
         eastPane.setVgrow(pane, Priority.ALWAYS);
     }
 
-    protected void loadPassengersTable(String typeValue,Object directionValue,Object dateValue,Object timeValue,Object flightNumberValue){
-        ArrayList<Passengers> listPassengers =  new PassengersSortService().makeListPassengersSorted(typeValue,directionValue,dateValue,timeValue,flightNumberValue);
+    protected void loadPassengersSearchTable(ArrayList<Passengers> listPassengers){
         tablePane = new PassengersTableModel().getTablePane(listPassengers);
         eastPane.getChildren().remove(1);
         eastPane.getChildren().add(1,tablePane);
         eastPane.setVgrow(tablePane, Priority.ALWAYS);
     }
-
 }

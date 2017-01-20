@@ -15,7 +15,7 @@
             <Button mnemonicParsing="false" text="AIRLINES" />
             <Button mnemonicParsing="false" text="CHECK IN" />
             <Button mnemonicParsing="false" onAction="#showPassengers" text="PASSENGERS" />
-            <Button mnemonicParsing="false" text="SEARCH" />
+            <Button mnemonicParsing="false" onAction="#showSearchPassengers" text="SEARCH" />
             <Button mnemonicParsing="false" text="EDIT DATA" />
          </children>
       </VBox>

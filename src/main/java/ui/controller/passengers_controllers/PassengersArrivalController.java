@@ -86,7 +86,7 @@ public class PassengersArrivalController extends PassengersGUI {
 
     @FXML
     public void chooseRefresh(){
-        loadDepartPassengers();
+        loadArrivalPassengers();
     }
 
     @FXML

@@ -3,10 +3,7 @@ package ui.controller.main_controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Priority;
-import ui.view.FlightsGUI;
-import ui.view.MainPage;
-import ui.view.PassengersGUI;
-import ui.view.PricesGUI;
+import ui.view.*;
 
 /**
  * Created by slavik on 17.01.2017.
@@ -39,6 +36,14 @@ public class MainPageController extends MainPage {
     @FXML
     public void showPassengers(){
         eastPane = new PassengersGUI().getEastPane();
+        bottomPane.getChildren().remove(1);
+        bottomPane.getChildren().add(1,eastPane);
+        bottomPane.setHgrow(eastPane, Priority.ALWAYS);
+    }
+
+    @FXML
+    public void showSearchPassengers(){
+        eastPane = new SearchPassengersGUI().getEastPane();
         bottomPane.getChildren().remove(1);
         bottomPane.getChildren().add(1,eastPane);
         bottomPane.setHgrow(eastPane, Priority.ALWAYS);

@@ -47,14 +47,13 @@ public class PassengersTableModel {
         return passengersData;
     }
 
-    public BorderPane getTablePane(String typeValue,Object directionValue,Object dateValue,Object timeValue,Object flightNumberValue){
-        loadTablePane(typeValue,directionValue, dateValue, timeValue, flightNumberValue);
+    public BorderPane getTablePane(ArrayList<Passengers> listPassengers){
+        loadTablePane(listPassengers);
         return tablePane;
     }
 
-    private void addDataToTable(String typeValue,Object directionValue,Object dateValue,Object timeValue,Object flightNumberValue){
-        ArrayList<Passengers> data = new PassengersSortService().makeListPassengersSorted(typeValue, directionValue, dateValue, timeValue, flightNumberValue);
-        passengersData.addAll(data);
+    private void addDataToTable(ArrayList<Passengers> listPassengers){
+        passengersData.addAll(listPassengers);
         passengersTable.setItems(getPassengersData());
         passengersTable.setPlaceholder(new Label("THERE ARE NOT FLIGHTS"));
     }
@@ -71,7 +70,7 @@ public class PassengersTableModel {
         columnTicketClass.setCellValueFactory(cellData -> cellData.getValue().classTicketProperty());
     }
 
-    private void loadTablePane(String typeValue,Object directionValue,Object dateValue,Object timeValue,Object flightNumberValue){
+    private void loadTablePane(ArrayList<Passengers> listPassengers){
         String tablePaneFxmlFile = "/fxml/passengers/passengersTable.fxml";
         FXMLLoader loaderTablePane = new FXMLLoader();
         try {
@@ -80,6 +79,6 @@ public class PassengersTableModel {
             e.printStackTrace();
         }
         PassengersTableModel controller = loaderTablePane.getController();
-        controller.addDataToTable(typeValue,directionValue, dateValue, timeValue, flightNumberValue);
+        controller.addDataToTable(listPassengers);
     }
 }
