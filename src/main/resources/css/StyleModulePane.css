@@ -1,0 +1,30 @@
+#moduleAirline{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 300;
+    -fx-pref-width:300;
+    -fx-max-width: 300;
+    -fx-min-height: 250;
+    -fx-pref-height: 250;
+    -fx-max-height: 250;
+}
+
+.text-field{
+    -fx-min-width: 150;
+    -fx-pref-width:150;
+    -fx-max-width: 150;
+    -fx-min-height: 25;
+    -fx-pref-height: 25;
+    -fx-max-height: 25;
+    -fx-text-alignment: center;
+    -fx-font-size: 15;
+}
+
+.button{
+    -fx-min-width: 150;
+    -fx-pref-width:150;
+    -fx-max-width: 150;
+    -fx-min-height: 30;
+    -fx-pref-height: 30;
+    -fx-max-height: 30;
+    -fx-font-size: 15;
+}

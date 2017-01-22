@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import ui.model.PricesTableModel;
 
 import java.io.IOException;
 
@@ -20,9 +19,6 @@ public class MainPage extends Application {
 
     @FXML
     protected VBox eastPane;
-
-    @FXML
-    private BorderPane center;
 
     public static void main(String[] args) throws Exception {
         new ConnectToMySQLDAO().connectToDB("password");

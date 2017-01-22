@@ -16,7 +16,7 @@
             <Button mnemonicParsing="false" text="CHECK IN" />
             <Button mnemonicParsing="false" onAction="#showPassengers" text="PASSENGERS" />
             <Button mnemonicParsing="false" onAction="#showSearchPassengers" text="SEARCH" />
-            <Button mnemonicParsing="false" text="EDIT DATA" />
+            <Button mnemonicParsing="false" onAction="#showEditData" text="EDIT DATA" />
          </children>
       </VBox>
       <VBox id="eastPane" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />

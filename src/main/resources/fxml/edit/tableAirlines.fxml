@@ -4,15 +4,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane id="scheduleEastPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/StyleEastPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.model.AirlinesTableModel">
    <center>
       <TableView fx:id="airlinesTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
-          <TableColumn fx:id="adressColumn" prefWidth="75.0" text="Adress" />
-            <TableColumn fx:id="telephoneColumn" prefWidth="75.0" text="Telephone" />
-            <TableColumn fx:id="websiteColumn" prefWidth="75.0" text="Website" />
+            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="NAME" />
+          <TableColumn fx:id="adressColumn" prefWidth="75.0" text="ADRESS" />
+            <TableColumn fx:id="telephoneColumn" prefWidth="75.0" text="TELEPHONE" />
+            <TableColumn fx:id="websiteColumn" prefWidth="75.0" text="WEBSITE" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

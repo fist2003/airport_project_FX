@@ -12,12 +12,6 @@ public class MainPageController extends MainPage {
     public MainPageController(){}
 
     @FXML
-    private Button btnFlights;
-
-    @FXML
-    private Button btnPrices;
-
-    @FXML
     public void showFlights(){
         eastPane = new FlightsGUI().getEastPane();
         bottomPane.getChildren().remove(1);
@@ -44,6 +38,14 @@ public class MainPageController extends MainPage {
     @FXML
     public void showSearchPassengers(){
         eastPane = new SearchPassengersGUI().getEastPane();
+        bottomPane.getChildren().remove(1);
+        bottomPane.getChildren().add(1,eastPane);
+        bottomPane.setHgrow(eastPane, Priority.ALWAYS);
+    }
+
+    @FXML
+    public void showEditData(){
+        eastPane = new EditDataGUI().getEastPane();
         bottomPane.getChildren().remove(1);
         bottomPane.getChildren().add(1,eastPane);
         bottomPane.setHgrow(eastPane, Priority.ALWAYS);
