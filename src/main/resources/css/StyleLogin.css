@@ -1,26 +1,27 @@
-#moduleAirline{
+#loginPane{
     -fx-background-color: #d8d9d8;
     -fx-min-width: 300;
     -fx-pref-width:300;
+    -fx-max-width: 300;
     -fx-min-height: 250;
     -fx-pref-height: 250;
     -fx-max-height: 250;
 }
 
 .text-field{
-    -fx-min-width: 150;
-    -fx-pref-width:150;
-    -fx-max-width:550;
+    -fx-min-width: 130;
+    -fx-pref-width:130;
+    -fx-max-width: 130;
     -fx-min-height: 25;
     -fx-pref-height: 25;
     -fx-max-height: 25;
     -fx-text-alignment: center;
     -fx-font-size: 15;
 }
-.label{
-    -fx-min-width: 150;
-    -fx-pref-width:150;
-    -fx-max-width:550;
+.password-field{
+    -fx-min-width: 130;
+    -fx-pref-width:130;
+    -fx-max-width: 130;
     -fx-min-height: 25;
     -fx-pref-height: 25;
     -fx-max-height: 25;

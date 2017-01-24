@@ -2,13 +2,19 @@ package ui.view;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.Entity;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 
 /**
@@ -22,6 +28,14 @@ public class OptionPaneGUI extends EditDataGUI {
     private static boolean flag;
     private static String optionStr;
 
+    private final String nameIsAlreadyExist = "This Name is already exist";
+    private final String inputIsTooLong = "Input is too long";
+    private final String inputIsIncorect = "input is incorect";
+    private final String enterSomeValue = "Please enter some value";
+
+    protected String getNameIsAlreadyExist() {return nameIsAlreadyExist;}
+    protected String getInputIsTooLong() {return inputIsTooLong;}
+
     protected static Entity getEntity() {return entity;}
     protected static void setEntity(Entity entity) {OptionPaneGUI.entity = entity;}
     protected static boolean isFlag() {return flag;}
@@ -34,12 +48,12 @@ public class OptionPaneGUI extends EditDataGUI {
         Stage windowOption = new Stage();
         windowOption.setTitle(option);
         windowOption.initModality(Modality.APPLICATION_MODAL);
-        AnchorPane modulePane;
+        GridPane modulePane;
         FXMLLoader loaderManePane = new FXMLLoader();
         try {
-            modulePane = (AnchorPane) loaderManePane.load(getClass().getResourceAsStream(fxmlUrl));
+            modulePane = (GridPane) loaderManePane.load(getClass().getResourceAsStream(fxmlUrl));
         } catch (IOException e) {
-            modulePane = new AnchorPane();
+            modulePane = new GridPane();
         }
         windowOption.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -60,4 +74,58 @@ public class OptionPaneGUI extends EditDataGUI {
         }
         return displayOptionPaneInsert(option,fxmlUrl);
     }
+
+    protected boolean isInputCorrect(TextField textField, Label label) {
+        boolean isBigLength = instEditDataService.isBigLength(textField.getText(), 50);
+        boolean isEmpty = textField.getText().isEmpty();
+        boolean isFirstWhiteSpace = instEditDataService.isFirstWhiteSpace(textField.getText());
+        boolean isDoubleWhiteSpaceIn = instEditDataService.isDoubleWhiteSpace(textField.getText());
+        if (((!isBigLength) && (!isFirstWhiteSpace) && (!isDoubleWhiteSpaceIn))) {
+            label.setText("");
+            return true;
+        }
+        else if(isEmpty){
+            label.setText(enterSomeValue);
+            return false;
+        }else if (isBigLength) {
+            label.setText(inputIsTooLong);
+            return false;
+        } else if (isDoubleWhiteSpaceIn) {
+            label.setText(inputIsIncorect);
+            return false;
+        } else {
+            label.setText(inputIsIncorect);
+            return false;
+        }
+    }
+
+    protected boolean isInputCorrect(TextField textField, Label label,int maxLength){
+        boolean isBigLength = instEditDataService.isBigLength(textField.getText(),maxLength);
+        boolean isEmpty = textField.getText().isEmpty();
+        boolean isFirstWhiteSpace = instEditDataService.isFirstWhiteSpace(textField.getText());
+        boolean isDoubleWhiteSpaceIn = instEditDataService.isDoubleWhiteSpace(textField.getText());
+        if (((!isBigLength) && (!isFirstWhiteSpace) && (!isDoubleWhiteSpaceIn))) {
+            label.setText("");
+            return true;
+        }
+        else if(isEmpty){
+            label.setText(enterSomeValue);
+            return false;
+        }else if (isBigLength) {
+            label.setText(inputIsTooLong);
+            return false;
+        } else if (isDoubleWhiteSpaceIn) {
+            label.setText(inputIsIncorect);
+            return false;
+        } else {
+            label.setText(inputIsIncorect);
+            return false;
+        }
+    }
+
+    protected void displayErrorDialog(String title){
+        Alert alert = new Alert(Alert.AlertType.WARNING, title, ButtonType.CLOSE);
+        alert.showAndWait();
+    }
+
 }

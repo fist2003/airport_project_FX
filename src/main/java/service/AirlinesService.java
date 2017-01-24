@@ -1,15 +1,15 @@
 package service;
 
 import dao.AirlinesDAO;
-import dao.DAOInterface;
 import model.Airlines;
+import model.Airplanes;
 
 import java.util.ArrayList;
 
 /**
  * Created by slavik on 21.01.2017.
  */
-public class AirlinesService implements DAOServiceInterface<Airlines> {
+public class AirlinesService implements CRUDServiceInterface<Airlines> {
 
     public AirlinesService(){
         this.instAirlinesDAO = new AirlinesDAO();
@@ -29,7 +29,17 @@ public class AirlinesService implements DAOServiceInterface<Airlines> {
         instAirlinesDAO.deleteInDBDAO(airline);
     }
 
-    public void getByIdService(Airlines airline){
-        instAirlinesDAO.getByIdDAO(airline);
+    public Airlines getByIdService(Airlines airline){
+        return instAirlinesDAO.getByIdDAO(airline);
+    }
+
+    public boolean isAirplanesRegisteredOnThisAirline(Airlines airline){
+        ArrayList<Airplanes> listAirplanes = new AirplanesService().getAllService();
+        for (Airplanes airplane:listAirplanes){
+            if(airplane.getAirline_id() == airline.getId()){
+                return true;
+            }
+        }
+        return false;
     }
 }

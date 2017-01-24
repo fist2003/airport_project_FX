@@ -15,6 +15,11 @@
     -fx-pref-height: 25;
     -fx-max-height: 25;
 }
+#btnLogin{
+    -fx-background-color: #000000;
+    -fx-pref-width: 100;
+    -fx-pref-height: 20;
+}
 
 #centerPane{
     -fx-background-image: url("city.png");

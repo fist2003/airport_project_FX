@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk1.8.0_112\bin\java" -jar target\airport_project-1.0-SNAPSHOT.jar

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by slavik on 22.01.2017.
  */
-public interface DAOServiceInterface<Entity> {
+public interface CRUDServiceInterface<Entity> {
 
     ArrayList<Entity> getAllService();
 
@@ -17,5 +17,5 @@ public interface DAOServiceInterface<Entity> {
 
     void deleteDataService(Entity entity);
 
-    void getByIdService(Entity entity);
+    Entity getByIdService(Entity entity);
 }

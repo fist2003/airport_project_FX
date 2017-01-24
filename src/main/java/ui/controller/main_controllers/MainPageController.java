@@ -1,7 +1,6 @@
 package ui.controller.main_controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Priority;
 import ui.view.*;
 
@@ -49,6 +48,11 @@ public class MainPageController extends MainPage {
         bottomPane.getChildren().remove(1);
         bottomPane.getChildren().add(1,eastPane);
         bottomPane.setHgrow(eastPane, Priority.ALWAYS);
+    }
+
+    @FXML
+    public void showLoginMenu(){
+        new LoginPaneGUI().displayLoginScene();
     }
 
 }
