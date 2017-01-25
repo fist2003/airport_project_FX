@@ -1,6 +1,8 @@
 package service;
 
 import dao.FlightsDAO;
+import model.Airlines;
+import model.Airplanes;
 import model.Entity;
 import model.Flights;
 
@@ -32,6 +34,19 @@ public class FlightsService {
 
     public void getByIdService(Flights flight){
         instFlightsDAO.getByIdDAO(flight);
+    }
+
+    public ArrayList<Flights> getAllForTableView(){
+        ArrayList<Flights> allList = getAllService();
+        ArrayList<Airplanes> allAirplaneslist = new AirplanesService().getAllService();
+        for (Flights flight:allList){
+            for (Airplanes airplane:allAirplaneslist){
+                if(airplane.getId() == flight.getAirplane_id()){
+                    flight.setAirplane_number(airplane.getNumberISO());
+                }
+            }
+        }
+        return allList;
     }
 
 }

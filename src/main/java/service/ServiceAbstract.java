@@ -15,14 +15,20 @@ import java.util.Set;
  */
 public abstract class ServiceAbstract {
     protected final String odessaStr = "odessa";
+    protected final String dateFormaterStr = "yyyy-MM-dd";
+
     protected final String onTimeStatus = "ON TIME";
     protected final String inFlightStatus = "IN FLIGHT";
     protected final String arrivedStatus = "ARRIVED";
     protected final String departedStatus = "DEPARTED";
     protected final String byScheduleStatus = "BY SCHEDULE";
     protected final String checkInStatus = "CHECK IN";
-    protected final String checkInClosedStatus = "CHECK IN CLOSED";
     protected final String gateClosedStatus = "GATE CLOSED";
+    protected final String unknownStatus = "UNKNOWN";
+    protected final String canceledStatus = "CANCELED";
+    protected final String expectedAtStatus = "EXPECTED AT";
+    protected final String delayedStatus = "DELAYED";
+
     protected final String gateNameA1 = "A1";
     protected final String gateNameB1 = "B1";
 
@@ -32,8 +38,31 @@ public abstract class ServiceAbstract {
     protected final String economClassStr = "ECONOM";
     protected final String businessClassStr = "BUSINESS";
 
-    protected LocalDate convertStringToLocalDate(String value) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public ArrayList<String> getStatusList(){
+        ArrayList<String> statusList = new ArrayList<String>();
+        statusList.add(onTimeStatus);statusList.add(inFlightStatus);statusList.add(arrivedStatus);
+        statusList.add(departedStatus);statusList.add(byScheduleStatus);statusList.add(checkInStatus);
+        statusList.add(gateClosedStatus);statusList.add(unknownStatus);statusList.add(canceledStatus);
+        statusList.add(expectedAtStatus);statusList.add(delayedStatus);
+        return statusList;
+    }
+
+    public ArrayList<String> getGatesList() {
+        ArrayList<String> gatesList = new ArrayList<String>();
+        gatesList.add(gateNameA1);
+        gatesList.add(gateNameB1);
+        return gatesList;
+    }
+
+    public ArrayList<String> getClassList() {
+        ArrayList<String> classList = new ArrayList<String>();
+        classList.add(economClassStr);
+        classList.add(businessClassStr);
+        return classList;
+    }
+
+    public LocalDate convertStringToLocalDate(String value) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormaterStr);
         LocalDate date1 = LocalDate.parse(value, formatter);
         return date1;
     }

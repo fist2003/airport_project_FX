@@ -33,13 +33,24 @@ public class AirlinesService implements CRUDServiceInterface<Airlines> {
         return instAirlinesDAO.getByIdDAO(airline);
     }
 
-    public boolean isAirplanesRegisteredOnThisAirline(Airlines airline){
-        ArrayList<Airplanes> listAirplanes = new AirplanesService().getAllService();
-        for (Airplanes airplane:listAirplanes){
-            if(airplane.getAirline_id() == airline.getId()){
-                return true;
+    public ArrayList<String> getListOfNames(){
+        ArrayList<Airlines> listAirlines = getAllService();
+        ArrayList<String> listNames = new ArrayList<>();
+        for (Airlines airline:listAirlines){
+            listNames.add(airline.getName());
+        }
+        return listNames;
+    }
+
+    public int getAirlineIdByName(String nameValue) {
+        ArrayList<Airlines> listAirlines = getAllService();
+        int id = 0;
+        for (Airlines airline : listAirlines) {
+            if (airline.getName().toLowerCase().equals(nameValue.toLowerCase())) {
+                id = airline.getId();
             }
         }
-        return false;
+        return id;
     }
+
 }

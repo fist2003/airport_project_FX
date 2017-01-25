@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Airlines;
-import model.Entity;
 import service.AirlinesService;
 import ui.view.OptionPaneGUI;
 
@@ -86,11 +85,9 @@ public class OptionPaneAirlineController extends OptionPaneGUI{
         boolean isInsertNewSelected = getOptionStr().equals(instEditDataService.getInsertNewOptionStr());
         boolean isEditSelected = getOptionStr().equals(instEditDataService.getEditOptionStr());
         boolean isDeleteSelected = getOptionStr().equals(instEditDataService.getDeleteOptionStr());
-
         boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getAirlinesTypeStr(),tfName.getText());
-
         if((isInsertNewSelected)&&((isDataExistInDB)||(!isAllFieldsInputCorrect()))){
-            if(isDataExistInDB)labelName.setText(getNameIsAlreadyExist());
+            if(isDataExistInDB)labelName.setText(getValueAlreadyExist());
             return;
         }
         else if((isInsertNewSelected)&&(!isDataExistInDB)&&(isAllFieldsInputCorrect())){
@@ -101,7 +98,7 @@ public class OptionPaneAirlineController extends OptionPaneGUI{
         else if((isEditSelected)&&(isAllFieldsInputCorrect())){
             boolean isEditedName = !instAirline.getName().toLowerCase().equals(tfName.getText().toLowerCase());
             if((isEditedName)&&(isDataExistInDB)) {
-                labelName.setText(getNameIsAlreadyExist());
+                labelName.setText(getValueAlreadyExist());
                 return;
             }
             else instAirlineService.editDataService(new Airlines(getEntity().getId(), tfName.getText(), tfAdress.getText(),

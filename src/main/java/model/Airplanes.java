@@ -16,6 +16,7 @@ public class Airplanes extends Entity {
     private SimpleIntegerProperty economPlaces;
     private SimpleIntegerProperty businessPlaces;
     private SimpleIntegerProperty airline_id;
+    private SimpleStringProperty airline_name;
 
     public Airplanes() {}
 
@@ -62,4 +63,8 @@ public class Airplanes extends Entity {
     public int getAirline_id() {return airline_id.get();}
     public SimpleIntegerProperty airline_idProperty() {return airline_id;}
     public void setAirline_id(int airline_id) {this.airline_id = new SimpleIntegerProperty(airline_id);}
+
+    public String getAirline_name() {return airline_name.get();}
+    public SimpleStringProperty airline_nameProperty() {return airline_name;}
+    public void setAirline_name(String airline_name) {this.airline_name =new SimpleStringProperty(airline_name);}
 }

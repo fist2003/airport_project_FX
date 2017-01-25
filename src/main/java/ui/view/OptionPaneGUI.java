@@ -2,19 +2,14 @@ package ui.view;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.Entity;
 
-import javax.xml.soap.Text;
 import java.io.IOException;
 
 /**
@@ -28,13 +23,15 @@ public class OptionPaneGUI extends EditDataGUI {
     private static boolean flag;
     private static String optionStr;
 
-    private final String nameIsAlreadyExist = "This Name is already exist";
+    private final String valueAlreadyExist = "This value is already exist";
     private final String inputIsTooLong = "Input is too long";
     private final String inputIsIncorect = "input is incorect";
     private final String enterSomeValue = "Please enter some value";
 
-    protected String getNameIsAlreadyExist() {return nameIsAlreadyExist;}
+    protected String getValueAlreadyExist() {return valueAlreadyExist;}
     protected String getInputIsTooLong() {return inputIsTooLong;}
+    protected String getInputIsIncorect() {return inputIsIncorect;}
+    protected String getEnterSomeValue() {return enterSomeValue;}
 
     protected static Entity getEntity() {return entity;}
     protected static void setEntity(Entity entity) {OptionPaneGUI.entity = entity;}
@@ -119,6 +116,16 @@ public class OptionPaneGUI extends EditDataGUI {
             return false;
         } else {
             label.setText(inputIsIncorect);
+            return false;
+        }
+    }
+
+    protected boolean isComboBoxValueChoosed(ComboBox comboBox,Label label){
+        if(comboBox.getValue() != null){
+            return true;
+        }
+        else {
+            label.setText("Please choose value!");
             return false;
         }
     }

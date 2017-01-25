@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane id="moduleAirplanes" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/StyleModulePane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.editdata_controllers.OptionPaneAirplaneController">
+  <columnConstraints>
+    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="MANUFACTURER" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <TextField fx:id="tfManufacturer" maxHeight="25.0" maxWidth="150.0" onKeyReleased="#checkManufacturer" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label fx:id="labelManufacturer" prefHeight="21.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label layoutX="10.0" layoutY="63.0" text="NUMBER ISO" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label layoutX="10.0" layoutY="143.0" text="MODEL" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label layoutX="10.0" layoutY="63.0" text="YEAR OF BUILD" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="tfModel" layoutX="155.0" layoutY="63.0" maxHeight="25.0" maxWidth="150.0" onKeyReleased="#checkModel" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label fx:id="labelModel" layoutX="155.0" layoutY="59.0" prefHeight="21.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="tfNumberISO" maxHeight="25.0" maxWidth="150.0" onKeyReleased="#checkNumberISO" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="11.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label fx:id="labelNumberISO" layoutX="155.0" layoutY="56.0" prefHeight="21.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="labelYear" layoutX="155.0" layoutY="179.0" prefHeight="21.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="tfYear" maxHeight="25.0" maxWidth="150.0" onKeyReleased="#checkYear" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <Button fx:id="btnOk" mnemonicParsing="false" onAction="#chooseOk" text="OK" GridPane.rowIndex="7" />
+      <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#chooseCancel" text="CANCEL" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Label layoutX="20.0" layoutY="242.0" text="ECONOM PLACES" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <Label layoutX="10.0" layoutY="293.0" text="BUSINESS PLACES" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label layoutX="10.0" layoutY="31.0" text="AIRLINE HOLDER" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="tfEconom" layoutX="155.0" layoutY="212.0" maxHeight="25.0" maxWidth="150.0" onKeyReleased="#checkEconom" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="tfBusiness" layoutX="160.0" layoutY="268.0" maxHeight="25.0" maxWidth="150.0" onKeyReleased="#checkBusiness" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label fx:id="labelEconom" layoutX="155.0" layoutY="171.0" prefHeight="21.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="labelBusiness" layoutX="155.0" layoutY="238.0" prefHeight="21.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <ComboBox fx:id="cbAirlines" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <Label fx:id="labelAirlines" layoutX="155.0" layoutY="291.0" prefHeight="21.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets right="10.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+   </children>
+</GridPane>

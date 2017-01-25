@@ -6,6 +6,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import service.EditDataService;
 import ui.model.AirlinesTableModel;
+import ui.model.AirplanesTableModel;
+import ui.model.FlightsTableModel;
 import ui.model.TableModelInterface;
 
 import java.io.IOException;
@@ -22,9 +24,16 @@ public class EditDataGUI extends MainPage {
     public EditDataGUI(){
         this.instEditDataService = new EditDataService();
         mapPaneFXML.put(instEditDataService.getAirlinesTypeStr(),editDataAirlinePaneUrl);
-        mapTableModel.put(instEditDataService.getAirlinesTypeStr(),new AirlinesTableModel());
-        mapModulePaneFXML.put(instEditDataService.getAirlinesTypeStr(),airlineModuleUrl);
+        mapPaneFXML.put(instEditDataService.getAirplanesTypeStr(),editDataAirplanePaneUrl);
+        mapPaneFXML.put(instEditDataService.getFlightsTypeStr(),editDataFlightsPaneUrl);
 
+        mapTableModel.put(instEditDataService.getAirlinesTypeStr(),new AirlinesTableModel());
+        mapTableModel.put(instEditDataService.getAirplanesTypeStr(),new AirplanesTableModel());
+        mapTableModel.put(instEditDataService.getFlightsTypeStr(),new FlightsTableModel());
+
+        mapModulePaneFXML.put(instEditDataService.getAirlinesTypeStr(),airlineModuleUrl);
+        mapModulePaneFXML.put(instEditDataService.getAirplanesTypeStr(),airplaneModuleUrl);
+        mapModulePaneFXML.put(instEditDataService.getFlightsTypeStr(),flightModuleUrl);
     }
     protected EditDataService instEditDataService;
 
@@ -38,6 +47,12 @@ public class EditDataGUI extends MainPage {
 
     protected final String editDataAirlinePaneUrl = "/fxml/edit/editDataAirline.fxml";
     protected final String airlineModuleUrl = "/fxml/edit/moduleAirline.fxml";
+    protected final String editDataAirplanePaneUrl = "/fxml/edit/editDataAirplane.fxml";
+    protected final String airplaneModuleUrl = "/fxml/edit/moduleAirplane.fxml";
+
+    protected final String editDataFlightsPaneUrl = "/fxml/edit/editDataFlights.fxml";
+    protected final String flightModuleUrl = "/fxml/edit/moduleFlight.fxml";
+
 
     public VBox getEastPane() {
         loadEditMenu();

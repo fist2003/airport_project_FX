@@ -7,13 +7,41 @@
     -fx-max-height: 250;
 }
 
+#moduleAirplanes{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 300;
+    -fx-pref-width:300;
+    -fx-min-height: 400;
+    -fx-pref-height: 400;
+    -fx-max-height: 400;
+}
+
+#moduleFlights{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 600;
+    -fx-pref-width:600;
+    -fx-min-height: 400;
+    -fx-pref-height: 400;
+    -fx-max-height: 400;
+}
+
 .text-field{
+     -fx-min-width: 150;
+     -fx-pref-width:150;
+     -fx-max-width:550;
+     -fx-min-height: 25;
+     -fx-pref-height: 25;
+     -fx-max-height: 25;
+     -fx-text-alignment: center;
+     -fx-font-size: 15;
+ }
+.combo-box{
     -fx-min-width: 150;
     -fx-pref-width:150;
     -fx-max-width:550;
-    -fx-min-height: 25;
-    -fx-pref-height: 25;
-    -fx-max-height: 25;
+    -fx-min-height: 30;
+    -fx-pref-height: 30;
+    -fx-max-height: 30;
     -fx-text-alignment: center;
     -fx-font-size: 15;
 }

@@ -1,7 +1,9 @@
 package service;
 
 import dao.AirplanesDAO;
+import model.Airlines;
 import model.Airplanes;
+import model.Flights;
 
 import java.util.ArrayList;
 
@@ -37,7 +39,29 @@ public class AirplanesService implements CRUDServiceInterface<Airplanes>{
     }
 
     @Override
-    public Airplanes getByIdService(Airplanes airplane) {
-        return instAirplanesDAO.getByIdDAO(airplane);
+    public Airplanes getByIdService(Airplanes airplane) {return instAirplanesDAO.getByIdDAO(airplane);}
+
+    public ArrayList<Airplanes> getAllForTableView(){
+        ArrayList<Airplanes> allList = getAllService();
+        ArrayList<Airlines> allAirlineslist = new AirlinesService().getAllService();
+        for (Airplanes airplane:allList){
+            for (Airlines airline:allAirlineslist){
+                if(airline.getId() == airplane.getAirline_id()){
+                    airplane.setAirline_name(airline.getName());
+                }
+            }
+        }
+        return allList;
     }
+
+    public ArrayList<String> getListOfNumbers(){
+        ArrayList<Airplanes> list = getAllService();
+        ArrayList<String> listNumbers = new ArrayList<>();
+        for (Airplanes airplane:list){
+            listNumbers.add(airplane.getNumberISO());
+        }
+        return listNumbers;
+    }
+
+
 }

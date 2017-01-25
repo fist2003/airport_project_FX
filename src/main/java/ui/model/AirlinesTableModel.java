@@ -22,16 +22,12 @@ public class AirlinesTableModel implements TableModelInterface {
 
     public AirlinesTableModel(){}
 
-    private ObservableList<Airlines> airlinesData = FXCollections.observableArrayList();
-    private BorderPane tableAirlines;
+    private ObservableList<Airlines> dataList = FXCollections.observableArrayList();
+    private BorderPane tablePane;
     private final  String tablePaneFxmlFile = "/fxml/edit/tableAirlines.fxml";
 
-    public TableView<Airlines> getTable() {return airlinesTable;}
-
     @FXML
-    private TableView<Airlines> airlinesTable;
-    @FXML
-    private TableColumn<Airlines, Integer> idColumn;
+    private TableView<Airlines> tableView;
     @FXML
     private TableColumn<Airlines, String> nameColumn;
     @FXML
@@ -41,24 +37,23 @@ public class AirlinesTableModel implements TableModelInterface {
     @FXML
     private TableColumn<Airlines, String> websiteColumn;
 
-    public ObservableList<Airlines> getAirlinesData() {
-        return airlinesData;
+    public ObservableList<Airlines> getDataList() {
+        return dataList;
     }
 
     public BorderPane getTablePane() {
         loadTablePane();
-        return tableAirlines;
+        return tablePane;
     }
 
     private void addDataToTable() {
-        airlinesData.addAll(new AirlinesService().getAllService());
-        airlinesTable.setItems(getAirlinesData());
-        airlinesTable.setPlaceholder(new Label("THERE AREN`T NO DATA"));
+        dataList.addAll(new AirlinesService().getAllService());
+        tableView.setItems(getDataList());
+        tableView.setPlaceholder(new Label("THERE AREN`T NO DATA"));
     }
 
     @FXML
     private void initialize() {
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         adressColumn.setCellValueFactory(cellData -> cellData.getValue().adressProperty());
         telephoneColumn.setCellValueFactory(cellData -> cellData.getValue().telephoneProperty());
@@ -68,7 +63,7 @@ public class AirlinesTableModel implements TableModelInterface {
     private void loadTablePane(){
         FXMLLoader loaderTablePane = new FXMLLoader();
         try {
-            tableAirlines = (BorderPane) loaderTablePane.load(getClass().getResourceAsStream(tablePaneFxmlFile));
+            tablePane = (BorderPane) loaderTablePane.load(getClass().getResourceAsStream(tablePaneFxmlFile));
         } catch (IOException e) {
             e.printStackTrace();
         }

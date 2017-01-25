@@ -1,7 +1,9 @@
 package service;
 
 import model.Airlines;
+import model.Airplanes;
 import model.Entity;
+import model.Flights;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -10,9 +12,11 @@ import java.util.regex.Pattern;
 /**
  * Created by slavik on 21.01.2017.
  */
-public class EditDataService {
+public class EditDataService extends ServiceAbstract {
 
     public EditDataService(){}
+
+    public String getDateFormater(){return dateFormaterStr;}
 
     private final String airlinesTypeStr = "AIRLINES";
     private final String airplanesTypeStr = "AIRPLANES";
@@ -82,25 +86,80 @@ public class EditDataService {
         return false;
     }
 
+    public boolean checkInputYear(String year){
+        Pattern patDate = Pattern.compile("^(19[0-9][0-9]|200[0-9]|201[0-7])$");
+        Matcher matDate = patDate.matcher(year);
+        return matDate.matches();
+    }
+
+    public boolean checkInputTime(String value){
+        Pattern patWhiteSpace = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+        Matcher matWhiteSpace = patWhiteSpace.matcher(value);
+        return matWhiteSpace.matches();
+    }
+
+    public boolean checkInputDate(String date){
+        Pattern patDate = Pattern.compile("^(19[0-9][0-9]|200[0-9]|201[0-7])-(0[1-9]|1[0-2])-([0-2][0-9]|3[0-1])$");
+        Matcher matDate = patDate.matcher(date);
+        return matDate.matches();
+    }
+
+    public boolean checkInputQuantityPlaces(String number){
+        Pattern patDate = Pattern.compile("^([0-9]|[0-9][0-9]|[0-4][0-9][0-9]|5[0][0])$");
+        Matcher matDate = patDate.matcher(number);
+        return matDate.matches();
+    }
+
     public boolean isDataAlreadyExist(String typeData,String querry){
         switch (typeData){
             case airlinesTypeStr:
-                ArrayList<Airlines> list = new AirlinesService().getAllService();
-                for (Airlines airline:list){
+                ArrayList<Airlines> listAirlines = new AirlinesService().getAllService();
+                for (Airlines airline:listAirlines){
                     if(airline.getName().toLowerCase().equals(querry.toLowerCase())){
                         return true;
                     }
                 }
                 break;
+            case airplanesTypeStr:
+                ArrayList<Airplanes> listAirplanes = new AirplanesService().getAllService();
+                for(Airplanes airplane:listAirplanes){
+                    if (airplane.getNumberISO().toLowerCase().equals(querry.toLowerCase())){
+                        return true;
+                    }
+                }
+
         }
         return false;
     }
 
-    public boolean isSafeDelete(String typeData, Entity entity){
-        switch (typeData){
-            case airlinesTypeStr:
-                return !new AirlinesService().isAirplanesRegisteredOnThisAirline((Airlines)entity);
-            default:return false;
+    public int convertStringToInt(String value) {
+        int intValue = 0;
+        try {
+            intValue = Integer.valueOf(value);
+        } catch (NumberFormatException e) {
         }
+        return intValue;
+    }
+
+    public boolean isSafeDelete(String type,Entity entity){
+        switch (type){
+            case airlinesTypeStr:
+                ArrayList<Airplanes> listAirplanes = new AirplanesService().getAllService();
+                for (Airplanes airplane:listAirplanes){
+                    if(airplane.getAirline_id() == entity.getId()){
+                        return false;
+                    }
+                }
+                break;
+            case airplanesTypeStr:
+                ArrayList<Flights> listFlights = new FlightsService().getAllService();
+                for (Flights flight:listFlights){
+                    if(flight.getAirplane_id() == entity.getId()){
+                        return false;
+                    }
+                }
+                break;
+        }
+        return true;
     }
 }

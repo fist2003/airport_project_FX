@@ -7,8 +7,8 @@ import model.Airlines;
 /**
  * Created by slavik on 22.01.2017.
  */
-public interface TableModelInterface<T> {
+public interface TableModelInterface {
 
      BorderPane getTablePane();
-     TableView<T> getTable();
+
 }

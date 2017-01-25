@@ -24,6 +24,7 @@ public class Flights extends Entity{
     private SimpleStringProperty statusOfFlight;
     private SimpleStringProperty gateName;
     private SimpleStringProperty currentTime;
+    private SimpleStringProperty airplane_number;
 
     public Flights() {}
 
@@ -101,4 +102,8 @@ public class Flights extends Entity{
     public String getGateName() {return gateName.get();}
     public SimpleStringProperty gateNameProperty() {return gateName;}
     public void setGateName(String gateName) {this.gateName =   new SimpleStringProperty(gateName);}
+
+    public String getAirplane_number() {return airplane_number.get();}
+    public SimpleStringProperty airplane_numberProperty() {return airplane_number;}
+    public void setAirplane_number(String airplane_number) {this.airplane_number = new SimpleStringProperty(airplane_number);}
 }

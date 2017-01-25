@@ -38,11 +38,6 @@ public class EditDataController extends EditDataGUI {
     }
 
     @FXML
-    public void check(){
-        System.out.println("check");
-    }
-
-    @FXML
     public void chooseType(){
         if(cbType.getValue() != null) {
             choose = cbType.getValue().toString();
@@ -58,8 +53,8 @@ public class EditDataController extends EditDataGUI {
             String optionValue = cbOption.getValue().toString();
             if (optionValue.equals(instEditDataService.getInsertNewOptionStr())) {
                 if ((choose != null) && (getMapModulePaneFXML().containsKey(choose))) {
-                    boolean flag = new OptionPaneGUI().displayOptionPaneInsert(optionValue, getMapModulePaneFXML().get(choose));
-                    if (flag) {
+                    boolean check = new OptionPaneGUI().displayOptionPaneInsert(optionValue, getMapModulePaneFXML().get(choose));
+                    if (check) {
                         loadEditDataPane(choose);
                     }
                 }
@@ -69,8 +64,8 @@ public class EditDataController extends EditDataGUI {
                 TableView tableView = (TableView) borderPane.getChildren().get(0);
                 Entity instEntity = (Entity) tableView.getSelectionModel().getSelectedItem();
                 if ((choose != null) && (getMapModulePaneFXML().containsKey(choose)) && (instEntity != null)) {
-                    boolean flag = new OptionPaneGUI().displayOptionPaneEdit(optionValue, getMapModulePaneFXML().get(choose), instEntity);
-                    if (flag) {
+                    boolean check = new OptionPaneGUI().displayOptionPaneEdit(optionValue, getMapModulePaneFXML().get(choose), instEntity);
+                    if (check) {
                         loadEditDataPane(choose);
                     }
                 }

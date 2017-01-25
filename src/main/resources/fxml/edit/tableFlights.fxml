@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane id="scheduleEastPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/StyleEastPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.model.FlightsTableModel">
+   <center>
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="numberColumn" prefWidth="75.0" text="NUMBER" />
+          <TableColumn fx:id="portDepartColumn" prefWidth="75.0" text="PORT DEPART" />
+            <TableColumn fx:id="portDestinColumn" prefWidth="75.0" text="PORT DESTIN" />
+            <TableColumn fx:id="dateDepartColumn" prefWidth="75.0" text="DATE DEPART" />
+            <TableColumn fx:id="dateArriveColumn" prefWidth="75.0" text="DATE ARRIVE" />
+            <TableColumn fx:id="timeDepartColumn" prefWidth="75.0" text="TIME DEPART" />
+            <TableColumn fx:id="timeArriveColumn" prefWidth="75.0" text="TIME ARRIVE" />
+            <TableColumn fx:id="priceEconomColumn" prefWidth="75.0" text="USD ECONOM" />
+            <TableColumn fx:id="priceBusinessColumn" prefWidth="75.0" text="USD BUSINESS" />
+            <TableColumn fx:id="airplaneColumn" prefWidth="75.0" text="AIRPLANE" />
+            <TableColumn fx:id="statusColumn" prefWidth="75.0" text="STATUS" />
+            <TableColumn fx:id="currentTimeColumn" prefWidth="75.0" text="CURRENT TIME" />
+            <TableColumn fx:id="gateColumn" prefWidth="75.0" text="GATE" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </center>
+</BorderPane>

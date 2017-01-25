@@ -91,7 +91,7 @@ public class FlightsDepartService extends ServiceAbstract implements ScheduleTab
                     status = checkInStatus;
                     gateName = gateNameB1;
                 } else if ((getDifferenceInTime(timeDepart, timeNow) < (45 * 60)) && (getDifferenceInTime(timeDepart, timeNow) >= (30 * 60))) {
-                    status = checkInClosedStatus;
+                    status = gateClosedStatus;
                     gateName = gateNameB1;
                 } else if ((getDifferenceInTime(timeDepart, timeNow) < (30 * 60)) && (getDifferenceInTime(timeDepart, timeNow) > (0))) {
                     status = gateClosedStatus;
