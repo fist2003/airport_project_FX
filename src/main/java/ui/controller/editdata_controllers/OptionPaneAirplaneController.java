@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Airplanes;
+import model.Flights;
 import service.AirlinesService;
 import service.AirplanesService;
 import ui.view.OptionPaneGUI;
@@ -121,7 +122,9 @@ public class OptionPaneAirplaneController extends OptionPaneGUI {
         boolean isInsertNewSelected = getOptionStr().equals(instEditDataService.getInsertNewOptionStr());
         boolean isEditSelected = getOptionStr().equals(instEditDataService.getEditOptionStr());
         boolean isDeleteSelected = getOptionStr().equals(instEditDataService.getDeleteOptionStr());
-        boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getAirplanesTypeStr(),tfNumberISO.getText());
+        Airplanes instance = new Airplanes();
+        instance.setNumberISO(tfNumberISO.getText());
+        boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getAirplanesTypeStr(),instance);
         if((isInsertNewSelected)&&((isDataExistInDB)||(!isAllFieldsInputCorrect()))){
             if(isDataExistInDB)labelNumberISO.setText(getValueAlreadyExist());
             return;

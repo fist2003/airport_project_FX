@@ -34,6 +34,9 @@ public class EditDataService extends ServiceAbstract {
     public String getEditOptionStr() {return editOptionStr;}
     public String getDeleteOptionStr() {return deleteOptionStr;}
 
+    public String getEconomStr(){return economClassStr;}
+    public String getBusinessStr(){return businessClassStr;}
+
     public ArrayList<String> getTypeList(){
         ArrayList<String> typeList = new ArrayList<String>();
         typeList.add(airlinesTypeStr);
@@ -50,6 +53,20 @@ public class EditDataService extends ServiceAbstract {
         optionList.add(editOptionStr);
         optionList.add(deleteOptionStr);
         return optionList;
+    }
+
+    public ArrayList<String> getSexList(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add(sexMaleStr);
+        list.add(sexFemaleStr);
+        return list;
+    }
+
+    public ArrayList<String> getTicketList(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add(economClassStr);
+        list.add(businessClassStr);
+        return list;
     }
 
     public boolean isFirstWhiteSpace(String querry){
@@ -107,28 +124,41 @@ public class EditDataService extends ServiceAbstract {
         return mat.matches();
     }
 
-    public boolean isDataAlreadyExist(String typeData,String querry){
+    public boolean isDataAlreadyExist(String typeData,Entity entity){
         switch (typeData){
             case airlinesTypeStr:
                 ArrayList<Airlines> listAirlines = new AirlinesService().getAllService();
+                Airlines instAirlines = (Airlines)entity;
                 for (Airlines airline:listAirlines){
-                    if(airline.getName().toLowerCase().equals(querry.toLowerCase())){
+                    if(airline.getName().toLowerCase().equals(instAirlines.getName().toLowerCase())){
                         return true;
                     }
                 }
                 break;
             case airplanesTypeStr:
                 ArrayList<Airplanes> listAirplanes = new AirplanesService().getAllService();
+                Airplanes instAirplanes = (Airplanes)entity;
                 for(Airplanes airplane:listAirplanes){
-                    if (airplane.getNumberISO().toLowerCase().equals(querry.toLowerCase())){
+                    if (airplane.getNumberISO().toLowerCase().equals(instAirplanes.getNumberISO().toLowerCase())){
                         return true;
                     }
                 }
                 break;
             case flightsTypeStr:
                 ArrayList<Flights> listFlights = new FlightsService().getAllService();
+                Flights instFlights = (Flights)entity;
                 for(Flights flight:listFlights){
-                    if (flight.getNumber().toLowerCase().equals(querry.toLowerCase())){
+                    if (flight.getNumber().toLowerCase().equals(instFlights.getNumber().toLowerCase())){
+                        return true;
+                    }
+                }
+                break;
+            case passengersTypeStr:
+                ArrayList<Passengers> listPassengers = new PassengersService().getAllService();
+                Passengers instPassenger = (Passengers) entity;
+                for(Passengers passenger:listPassengers){
+                    if ((passenger.getFlight_id() == instPassenger.getFlight_id())&&
+                            (passenger.getPassportNumber().toLowerCase().equals(instPassenger.getPassportNumber().toLowerCase()))){
                         return true;
                     }
                 }

@@ -38,6 +38,12 @@ public abstract class ServiceAbstract {
     protected final String economClassStr = "ECONOM";
     protected final String businessClassStr = "BUSINESS";
 
+    protected final String sexMaleStr = "MALE";
+    protected final String sexFemaleStr = "FEMALE";
+
+    protected final String ticketEconomStr = "ECONOM";
+    protected final String ticketBusinessStr = "BUSINESS";
+
     public ArrayList<String> getStatusList(){
         ArrayList<String> statusList = new ArrayList<String>();
         statusList.add(onTimeStatus);statusList.add(inFlightStatus);statusList.add(arrivedStatus);

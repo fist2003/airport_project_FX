@@ -1,6 +1,7 @@
 package dao;
 
 import model.Passengers;
+import service.EditDataService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,6 +26,12 @@ public class PassengersDAO extends ConnectToMySQLDAO implements DAOInterface<Pas
     private String querryDelete = "DELETE FROM `passengers` WHERE `id` = ?;";
     private String querryGetAll = "Select * from `passengers`;";
     private String querryGetById = "Select * from `passengers` where `id` = ?;";
+    private String querryCheckEconomFreePlaces = "Select distinct count(airplanes.numberISO),airplanes.economPlaces " +
+            "from passengers join flights on passengers.flight_id = flights.id join airplanes on " +
+            "flights.airplane_id = airplanes.id where passengers.flight_id = ? and passengers.classTicket = 'econom';";
+    private String querryCheckBusinessFreePlaces = "Select distinct count(airplanes.numberISO),airplanes.businessPlaces " +
+            "from passengers join flights on passengers.flight_id = flights.id join airplanes on " +
+            "flights.airplane_id = airplanes.id where passengers.flight_id = ? and passengers.classTicket = 'business';";
 
     @Override
     public boolean insertNewDAO(Passengers passenger) {
@@ -144,5 +151,30 @@ public class PassengersDAO extends ConnectToMySQLDAO implements DAOInterface<Pas
             e.printStackTrace();
             return null;
         }
+    }
+
+    public int getQuantityFreePlaceInFlightDAO(Passengers passenger){
+        int countBusyPlaces = 0;
+        int placesTotal = 0;
+        String querry = null;
+        if(passenger.getClassTicket().toLowerCase().equals(new EditDataService().getEconomStr().toLowerCase())) {
+            querry = querryCheckEconomFreePlaces;
+        }
+        else if(passenger.getClassTicket().toLowerCase().equals(new EditDataService().getBusinessStr().toLowerCase())){
+            querry = querryCheckBusinessFreePlaces;
+        }
+        else{return -1;}
+        try {PreparedStatement ps = getConnection().prepareStatement(querry);
+            ps.setLong(1,passenger.getFlight_id());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                countBusyPlaces = rs.getInt(1);
+                placesTotal = rs.getInt(2);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return placesTotal - countBusyPlaces;
     }
 }

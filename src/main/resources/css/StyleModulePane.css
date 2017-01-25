@@ -25,6 +25,15 @@
     -fx-max-height: 400;
 }
 
+#modulePassengers{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 300;
+    -fx-pref-width:300;
+    -fx-min-height: 450;
+    -fx-pref-height: 450;
+    -fx-max-height: 450;
+}
+
 .text-field{
      -fx-min-width: 150;
      -fx-pref-width:150;

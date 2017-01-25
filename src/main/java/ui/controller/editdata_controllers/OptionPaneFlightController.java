@@ -144,7 +144,9 @@ public class OptionPaneFlightController extends OptionPaneGUI {
         boolean isInsertNewSelected = getOptionStr().equals(instEditDataService.getInsertNewOptionStr());
         boolean isEditSelected = getOptionStr().equals(instEditDataService.getEditOptionStr());
         boolean isDeleteSelected = getOptionStr().equals(instEditDataService.getDeleteOptionStr());
-        boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getFlightsTypeStr(),tfFlight.getText());
+        Flights instance = new Flights();
+        instance.setNumber(tfFlight.getText());
+        boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getFlightsTypeStr(),instance);
         if((isInsertNewSelected)&&((isDataExistInDB)||(!isAllFieldsInputCorrect()))){
             if(isDataExistInDB) labelFlight.setText(getValueAlreadyExist());
             return;
@@ -233,6 +235,7 @@ public class OptionPaneFlightController extends OptionPaneGUI {
             }
         });
     }
+
     private boolean isDepartDateCorrect() {
         if((dateArrive.getValue() != null)&&(dateDepart.getValue() != null)) {
             if (dateDepart.getValue().isAfter(dateArrive.getValue())) {

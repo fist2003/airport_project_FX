@@ -85,7 +85,9 @@ public class OptionPaneAirlineController extends OptionPaneGUI{
         boolean isInsertNewSelected = getOptionStr().equals(instEditDataService.getInsertNewOptionStr());
         boolean isEditSelected = getOptionStr().equals(instEditDataService.getEditOptionStr());
         boolean isDeleteSelected = getOptionStr().equals(instEditDataService.getDeleteOptionStr());
-        boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getAirlinesTypeStr(),tfName.getText());
+        Airlines instance = new Airlines();
+        instance.setName(tfName.getText());
+        boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getAirlinesTypeStr(),instance);
         if((isInsertNewSelected)&&((isDataExistInDB)||(!isAllFieldsInputCorrect()))){
             if(isDataExistInDB)labelName.setText(getValueAlreadyExist());
             return;
