@@ -16,25 +16,27 @@ import java.util.Map;
  */
 public class EditDataGUI extends MainPage {
 
-
-
     public EditDataGUI(){
         this.instEditDataService = new EditDataService();
         mapPaneFXML.put(instEditDataService.getAirlinesTypeStr(),editDataAirlinePaneUrl);
         mapPaneFXML.put(instEditDataService.getAirplanesTypeStr(),editDataAirplanePaneUrl);
         mapPaneFXML.put(instEditDataService.getFlightsTypeStr(),editDataFlightsPaneUrl);
         mapPaneFXML.put(instEditDataService.getPassengersTypeStr(),editDataPassengersPaneUrl);
+        mapPaneFXML.put(instEditDataService.getUserssTypeStr(),editDataUsersPaneUrl);
 
         mapTableModel.put(instEditDataService.getAirlinesTypeStr(),new AirlinesTableModel());
         mapTableModel.put(instEditDataService.getAirplanesTypeStr(),new AirplanesTableModel());
         mapTableModel.put(instEditDataService.getFlightsTypeStr(),new FlightsTableModel());
         mapTableModel.put(instEditDataService.getPassengersTypeStr(),new EditPassengersTableModel());
+        mapTableModel.put(instEditDataService.getUserssTypeStr(),new UsersTableModel());
 
         mapModulePaneFXML.put(instEditDataService.getAirlinesTypeStr(),airlineModuleUrl);
         mapModulePaneFXML.put(instEditDataService.getAirplanesTypeStr(),airplaneModuleUrl);
         mapModulePaneFXML.put(instEditDataService.getFlightsTypeStr(),flightModuleUrl);
         mapModulePaneFXML.put(instEditDataService.getPassengersTypeStr(),passengerModuleUrl);
+        mapModulePaneFXML.put(instEditDataService.getUserssTypeStr(),userModuleUrl);
     }
+
     protected EditDataService instEditDataService;
 
     private Map<String,String> mapPaneFXML = new HashMap<>();
@@ -56,6 +58,9 @@ public class EditDataGUI extends MainPage {
 
     protected final String editDataPassengersPaneUrl = "/fxml/edit/editDataPassenger.fxml";
     protected final String passengerModuleUrl = "/fxml/edit/modulePassengers.fxml";
+
+    protected final String editDataUsersPaneUrl = "/fxml/edit/editDataUser.fxml";
+    protected final String userModuleUrl = "/fxml/edit/moduleUser.fxml";
 
     public VBox getEastPane() {
         loadEditMenu();

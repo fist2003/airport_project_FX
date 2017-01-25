@@ -2,6 +2,7 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import service.EditDataService;
 
 /**
  * Created by ПК on 22.12.2016.
@@ -16,6 +17,7 @@ public class Users extends Entity {
     private SimpleStringProperty sex;
     private SimpleStringProperty email;
     private SimpleIntegerProperty isAdmin;
+    private SimpleStringProperty typeUser;
 
     public Users() {}
 
@@ -28,6 +30,10 @@ public class Users extends Entity {
         this.sex =  new SimpleStringProperty(sex);
         this.email =  new SimpleStringProperty(email);
         this.isAdmin = new SimpleIntegerProperty(isAdmin);
+        if(isAdmin == 1){
+            this.typeUser = new SimpleStringProperty(new EditDataService().getTypeUserAdmin());
+        }
+        else this.typeUser = new SimpleStringProperty(new EditDataService().getTypeUserUser());
     }
 
     public int getId() {return id.get();}
@@ -61,4 +67,8 @@ public class Users extends Entity {
     public int getIsAdmin() {return isAdmin.get();}
     public SimpleIntegerProperty isAdminProperty() {return isAdmin;}
     public void setIsAdmin(int isAdmin) {this.isAdmin = new SimpleIntegerProperty(isAdmin);}
+
+    public String getTypeUser() {return typeUser.get();}
+    public SimpleStringProperty typeUserProperty() {return typeUser;}
+    public void setTypeUser(String typeUser) {this.typeUser =  new SimpleStringProperty(typeUser);}
 }

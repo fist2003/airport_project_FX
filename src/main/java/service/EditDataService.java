@@ -37,6 +37,16 @@ public class EditDataService extends ServiceAbstract {
     public String getEconomStr(){return economClassStr;}
     public String getBusinessStr(){return businessClassStr;}
 
+    public String getTypeUserAdmin(){return typeUserAdmin;}
+    public String getTypeUserUser(){return typeUserUser;}
+
+    public ArrayList<String> getTypeUsersList(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add(typeUserAdmin);
+        list.add(typeUserUser);
+        return list;
+    }
+
     public ArrayList<String> getTypeList(){
         ArrayList<String> typeList = new ArrayList<String>();
         typeList.add(airlinesTypeStr);
@@ -159,6 +169,16 @@ public class EditDataService extends ServiceAbstract {
                 for(Passengers passenger:listPassengers){
                     if ((passenger.getFlight_id() == instPassenger.getFlight_id())&&
                             (passenger.getPassportNumber().toLowerCase().equals(instPassenger.getPassportNumber().toLowerCase()))){
+                        return true;
+                    }
+                }
+                break;
+            case userssTypeStr:
+                ArrayList<Users> listUsers = new UsersService().getAllService();
+                Users instUsers = (Users) entity;
+                for(Users user:listUsers){
+                    if ((user.getLogin().toLowerCase().equals(instUsers.getLogin().toLowerCase()))||
+                            (user.getEmail().toLowerCase().equals(instUsers.getEmail().toLowerCase()))){
                         return true;
                     }
                 }

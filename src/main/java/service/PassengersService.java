@@ -1,8 +1,6 @@
 package service;
 
-import dao.FlightsDAO;
 import dao.PassengersDAO;
-import model.Airplanes;
 import model.Flights;
 import model.Passengers;
 
@@ -11,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by slavik on 19.01.2017.
  */
-public class PassengersService {
+public class PassengersService implements CRUDServiceInterface<Passengers> {
 
     public PassengersService(){
         this.instPassengersDAO = new PassengersDAO();
@@ -33,8 +31,8 @@ public class PassengersService {
         instPassengersDAO.deleteInDBDAO(passenger);
     }
 
-    public void getByIdService(Passengers passenger){
-        instPassengersDAO.getByIdDAO(passenger);
+    public Passengers getByIdService(Passengers passenger){
+        return instPassengersDAO.getByIdDAO(passenger);
     }
 
     public ArrayList<Passengers> getAllForTableView(){

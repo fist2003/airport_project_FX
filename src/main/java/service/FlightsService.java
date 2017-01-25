@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by ПК on 22.12.2016.
  */
-public class FlightsService {
+public class FlightsService implements CRUDServiceInterface<Flights> {
     public FlightsService(){
         this.instFlightsDAO = new FlightsDAO();
     }
@@ -32,8 +32,8 @@ public class FlightsService {
        instFlightsDAO.deleteInDBDAO(flight);
     }
 
-    public void getByIdService(Flights flight){
-        instFlightsDAO.getByIdDAO(flight);
+    public Flights getByIdService(Flights flight){
+        return instFlightsDAO.getByIdDAO(flight);
     }
 
     public ArrayList<Flights> getAllForTableView(){

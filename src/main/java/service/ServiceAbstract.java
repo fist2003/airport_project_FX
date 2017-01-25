@@ -41,8 +41,8 @@ public abstract class ServiceAbstract {
     protected final String sexMaleStr = "MALE";
     protected final String sexFemaleStr = "FEMALE";
 
-    protected final String ticketEconomStr = "ECONOM";
-    protected final String ticketBusinessStr = "BUSINESS";
+    protected final String typeUserAdmin = "ADMIN";
+    protected final String typeUserUser = "USER";
 
     public ArrayList<String> getStatusList(){
         ArrayList<String> statusList = new ArrayList<String>();
