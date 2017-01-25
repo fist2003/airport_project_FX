@@ -1,9 +1,6 @@
 package service;
 
-import model.Airlines;
-import model.Airplanes;
-import model.Entity;
-import model.Flights;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -93,9 +90,9 @@ public class EditDataService extends ServiceAbstract {
     }
 
     public boolean checkInputTime(String value){
-        Pattern patWhiteSpace = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
-        Matcher matWhiteSpace = patWhiteSpace.matcher(value);
-        return matWhiteSpace.matches();
+        Pattern pat = Pattern.compile("^((0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])|((0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9])$");
+        Matcher mat = pat.matcher(value);
+        return mat.matches();
     }
 
     public boolean checkInputDate(String date){
@@ -105,9 +102,9 @@ public class EditDataService extends ServiceAbstract {
     }
 
     public boolean checkInputQuantityPlaces(String number){
-        Pattern patDate = Pattern.compile("^([0-9]|[0-9][0-9]|[0-4][0-9][0-9]|5[0][0])$");
-        Matcher matDate = patDate.matcher(number);
-        return matDate.matches();
+        Pattern pat = Pattern.compile("^([0-9]|[0-9][0-9]|[0-4][0-9][0-9]|5[0][0])$");
+        Matcher mat = pat.matcher(number);
+        return mat.matches();
     }
 
     public boolean isDataAlreadyExist(String typeData,String querry){
@@ -127,6 +124,15 @@ public class EditDataService extends ServiceAbstract {
                         return true;
                     }
                 }
+                break;
+            case flightsTypeStr:
+                ArrayList<Flights> listFlights = new FlightsService().getAllService();
+                for(Flights flight:listFlights){
+                    if (flight.getNumber().toLowerCase().equals(querry.toLowerCase())){
+                        return true;
+                    }
+                }
+                break;
 
         }
         return false;
@@ -155,6 +161,14 @@ public class EditDataService extends ServiceAbstract {
                 ArrayList<Flights> listFlights = new FlightsService().getAllService();
                 for (Flights flight:listFlights){
                     if(flight.getAirplane_id() == entity.getId()){
+                        return false;
+                    }
+                }
+                break;
+            case flightsTypeStr:
+                ArrayList<Passengers> listPassengers = new PassengersService().getAllService();
+                for (Passengers passenger:listPassengers){
+                    if(passenger.getFlight_id() == entity.getId()){
                         return false;
                     }
                 }

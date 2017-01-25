@@ -63,5 +63,16 @@ public class AirplanesService implements CRUDServiceInterface<Airplanes>{
         return listNumbers;
     }
 
+    public int getAirplaneIdByName(String nameValue) {
+        ArrayList<Airplanes> listAirplanes = getAllService();
+        int id = 0;
+        for (Airplanes airplane : listAirplanes) {
+            if (airplane.getNumberISO().toLowerCase().equals(nameValue.toLowerCase())) {
+                id = airplane.getId();
+            }
+        }
+        return id;
+    }
+
 
 }

@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import model.Airplanes;
 import model.Flights;
 import service.AirplanesService;
 import service.FlightsService;
@@ -126,24 +125,78 @@ public class OptionPaneFlightController extends OptionPaneGUI {
     @FXML
     public void checkPortDestin(){isInputCorrect(tfPortDestin,labelPortDestin);}
     @FXML
-    public void checkDateDepart(){
-      //  isDepartDateCorrect();
-    }
+    public void checkDateDepart(){isDepartDateCorrect();}
     @FXML
-    public void checkDateArrive(){
-
-    }
+    public void checkDateArrive(){isArriveDateCorrect();}
     @FXML
-    public void checkTime(){
-
-    }
+    public void checkTimeDepart(){isInputTimeCorrect(tfTimeDepart,labelTimeDepart);}
     @FXML
-    public void checkPrice(){
-
-    }
+    public void checkTimeArrive(){isInputTimeCorrect(tfTimeArrive,labelTimeArrive);}
+    @FXML
+    public void checkTimeCurrent(){isInputCurrentTimeCorrect();}
+    @FXML
+    public void checkPriceEconom(){isInputPriceCorrect(tfPriceEconom,labelPriceEconom);}
+    @FXML
+    public void checkPriceBusiness(){isInputPriceCorrect(tfPriceBusiness,labelPriceBusiness);}
 
     @FXML
     public void chooseOk(){
+        boolean isInsertNewSelected = getOptionStr().equals(instEditDataService.getInsertNewOptionStr());
+        boolean isEditSelected = getOptionStr().equals(instEditDataService.getEditOptionStr());
+        boolean isDeleteSelected = getOptionStr().equals(instEditDataService.getDeleteOptionStr());
+        boolean isDataExistInDB = instEditDataService.isDataAlreadyExist(instEditDataService.getFlightsTypeStr(),tfFlight.getText());
+        if((isInsertNewSelected)&&((isDataExistInDB)||(!isAllFieldsInputCorrect()))){
+            if(isDataExistInDB) labelFlight.setText(getValueAlreadyExist());
+            return;
+        }
+        else if((isInsertNewSelected)&&(!isDataExistInDB)&&(isAllFieldsInputCorrect())){
+            int airplane_id = new AirplanesService().getAirplaneIdByName(cbAirplanes.getValue().toString());
+            if (airplane_id > 0) {
+                int priceEconom = instEditDataService.convertStringToInt(tfPriceEconom.getText());
+                int priceBusiness = instEditDataService.convertStringToInt(tfPriceBusiness.getText());
+                String status = getComboBoxStringValue(cbStatusFlight);
+                String gate = getComboBoxStringValue(cbGate);
+                String current = getCurrentTimeValue();
+                instFlightsService.insertNewService(new Flights(0, tfFlight.getText(),tfPortDepart.getText(),
+                        tfPortDestin.getText(),dateDepart.getValue().toString(), dateArrive.getValue().toString(),
+                        tfTimeDepart.getText(),tfTimeArrive.getText(),priceEconom, priceBusiness,airplane_id,status,
+                        gate,current));
+            }
+        }
+
+        if ((isEditSelected)&&(!isAllFieldsInputCorrect())){return;}
+        else if((isEditSelected)&&(isAllFieldsInputCorrect())){
+            boolean isEditedNumber = !instFlight.getNumber().toLowerCase().equals(tfFlight.getText().toLowerCase());
+            if((isEditedNumber)&&(isDataExistInDB)) {
+                labelFlight.setText(getValueAlreadyExist());
+                return;
+            }
+            else {
+                int airplane_id = new AirplanesService().getAirplaneIdByName(cbAirplanes.getValue().toString());
+                if (airplane_id > 0) {
+                    int priceEconom = instEditDataService.convertStringToInt(tfPriceEconom.getText());
+                    int priceBusiness = instEditDataService.convertStringToInt(tfPriceBusiness.getText());
+                    String status = getComboBoxStringValue(cbStatusFlight);
+                    String gate = getComboBoxStringValue(cbGate);
+                    String current = getCurrentTimeValue();
+                    instFlightsService.editDataService(new Flights(getEntity().getId(), tfFlight.getText(),tfPortDepart.getText(),
+                            tfPortDestin.getText(),dateDepart.getValue().toString(), dateArrive.getValue().toString(),
+                            tfTimeDepart.getText(),tfTimeArrive.getText(),priceEconom, priceBusiness,airplane_id,status,
+                            gate,current));
+                }
+            }
+        }
+        if(isDeleteSelected){
+            instFlight.setId(getEntity().getId());
+            if(instEditDataService.isSafeDelete(instEditDataService.getAirplanesTypeStr(),instFlight)){
+                instFlightsService.deleteDataService((Flights) getEntity());
+            }
+            else {
+                displayErrorDialog("You can`t delete this flight while there are registered passengers on it!");
+                return;
+            }
+        }
+
         Stage stage = (Stage) btnOk.getScene().getWindow();
         stage.close();
         setFlag(true);
@@ -180,25 +233,105 @@ public class OptionPaneFlightController extends OptionPaneGUI {
             }
         });
     }
-//don`t work
-/*    private boolean isDepartDateCorrect() {
-        boolean flag = false;
-        if (!instEditDataService.checkInputDate(dateDepart.getValue().toString())) {
-                System.out.println(dateDepart.getValue().toString());
-                System.out.println(instEditDataService.checkInputDate(dateDepart.getValue().toString()));
-                labelDateDepart.setText("Input date format is wrong");
-                flag = false;
-            } else {
-                labelDateDepart.setText("");
-                flag = true;
-            }
+    private boolean isDepartDateCorrect() {
         if((dateArrive.getValue() != null)&&(dateDepart.getValue() != null)) {
             if (dateDepart.getValue().isAfter(dateArrive.getValue())) {
-                labelDateDepart.setText("Date of depart can`t be after date of arrive");
-                flag = false;
+                labelDateDepart.setText("Can`t be after arrive date");
+                return false;
             }
+            else {labelDateDepart.setText("");}
         }
-        return flag;
+        else if (dateDepart.getValue() == null){
+            labelDateDepart.setText(getEnterSomeValue());
+            return false;
+        }
+        else {labelDateDepart.setText("");}
+        return true;
     }
-*/
+
+    private boolean isArriveDateCorrect() {
+        if((dateArrive.getValue() != null)&&(dateDepart.getValue() != null)) {
+            if (dateArrive.getValue().isBefore(dateDepart.getValue())) {
+                labelDateArrive.setText("Can`t be before depart date");
+                return false;
+            }
+            else {labelDateArrive.setText("");}
+        }
+        else if (dateArrive.getValue() == null){
+            labelDateArrive.setText(getEnterSomeValue());
+            return false;
+        }
+        else {labelDateArrive.setText("");}
+        return true;
+    }
+
+    private boolean isInputTimeCorrect(TextField time,Label label){
+        if(!instEditDataService.checkInputTime(time.getText())){
+            label.setText(getInputIsIncorect());
+            return false;
+        }
+        else {
+            label.setText("");
+            return true;
+        }
+    }
+
+    private boolean isInputCurrentTimeCorrect(){
+        if((tfCurrentTime.getText() != null)&&(tfCurrentTime.getText().length() > 0)){
+            return isInputTimeCorrect(tfCurrentTime,labelTimeCurrent);
+        }
+        else {
+            labelTimeCurrent.setText("");
+            return true;
+        }
+    }
+
+    private boolean isInputPriceCorrect(TextField textField,Label label){
+        if (!instEditDataService.isInputNumber(textField.getText())){
+            label.setText(getInputIsIncorect());
+            return false;
+        }
+        else {
+            label.setText("");
+            return true;
+        }
+    }
+
+    private boolean isAllFieldsInputCorrect(){
+        boolean check = true;
+        boolean number = isInputCorrect(tfFlight,labelFlight);
+        boolean portDepart = isInputCorrect(tfPortDepart,labelPortDepart);
+        boolean portDestin = isInputCorrect(tfPortDestin,labelPortDestin);
+        boolean dateDepart = isDepartDateCorrect();
+        boolean dateDestin = isArriveDateCorrect();
+        boolean timeDepart = isInputTimeCorrect(tfTimeDepart,labelTimeDepart);
+        boolean timeDestin = isInputTimeCorrect(tfTimeArrive,labelTimeArrive);
+        boolean timeCurrent = isInputCurrentTimeCorrect();
+        boolean priceEconom = isInputPriceCorrect(tfPriceEconom,labelPriceEconom);
+        boolean priceBusiness = isInputPriceCorrect(tfPriceBusiness,labelPriceBusiness);
+        boolean airplaneCB = isComboBoxValueChoosed(cbAirplanes,labelAirplane);
+        boolean[] arr = {number,portDepart,portDestin,dateDepart,dateDestin,timeDepart,timeDestin,timeCurrent,priceEconom,
+        priceBusiness,airplaneCB};
+        for (Boolean value:arr){
+            if(!value){check = false;}
+        }
+        return check;
+    }
+
+    private String getComboBoxStringValue(ComboBox comboBox){
+        String result = "";
+        if (comboBox.getValue() != null){
+            result = comboBox.getValue().toString();
+        }
+        return result;
+    }
+    private String getCurrentTimeValue(){
+        String result = null;
+        if (tfCurrentTime.getText() != null){
+            if(!tfCurrentTime.getText().equals("")){
+                result = tfCurrentTime.getText();}
+        }
+        return result;
+    }
+
 }
