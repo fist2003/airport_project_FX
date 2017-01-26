@@ -90,7 +90,7 @@ public class OptionPaneUserController extends OptionPaneGUI {
 
     @FXML
     public void checkEmail(){
-        isEmailCorrect();
+        isEmailCorrect(tfEmail,labelEmail);
     }
 
     @FXML
@@ -157,7 +157,7 @@ public class OptionPaneUserController extends OptionPaneGUI {
         setEntity(null);
     }
 
-    private boolean isPasswordCorrect(PasswordField pfPassword,Label label){
+    public boolean isPasswordCorrect(PasswordField pfPassword,Label label){
         if((pfPassword.getText().length() >= 5) && (isInputCorrect(pfPassword,label))){
             label.setText("");
             return true;
@@ -169,7 +169,7 @@ public class OptionPaneUserController extends OptionPaneGUI {
         else return false;
     }
 
-    private boolean isEmailCorrect(){
+    public boolean isEmailCorrect(TextField tfEmail,Label labelEmail){
         if(instUsersService.validateEmail(tfEmail.getText())){
             labelEmail.setText("");
             return true;
@@ -182,7 +182,7 @@ public class OptionPaneUserController extends OptionPaneGUI {
         boolean check = true;
         boolean login = isInputCorrect(tfLogin,labelLogin);
         boolean password = isPasswordCorrect(pfPassword,labelPassword);
-        boolean email = isEmailCorrect();
+        boolean email = isEmailCorrect(tfEmail,labelEmail);
         boolean lastName = isInputCorrect(tfLastName,labelLastName);
         boolean firstName = isInputCorrect(tfFirstName,labelFirstName);
         boolean sex = isComboBoxValueChoosed(cbSex,labelSex);

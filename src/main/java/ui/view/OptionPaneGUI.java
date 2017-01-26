@@ -72,7 +72,7 @@ public class OptionPaneGUI extends EditDataGUI {
         return displayOptionPaneInsert(option,fxmlUrl);
     }
 
-    protected boolean isInputCorrect(TextField textField, Label label) {
+    public boolean isInputCorrect(TextField textField, Label label) {
         boolean isBigLength = instEditDataService.isBigLength(textField.getText(), 50);
         boolean isEmpty = textField.getText().isEmpty();
         boolean isFirstWhiteSpace = instEditDataService.isFirstWhiteSpace(textField.getText());
@@ -96,7 +96,7 @@ public class OptionPaneGUI extends EditDataGUI {
         }
     }
 
-    protected boolean isInputCorrect(TextField textField, Label label,int maxLength){
+    public boolean isInputCorrect(TextField textField, Label label,int maxLength){
         boolean isBigLength = instEditDataService.isBigLength(textField.getText(),maxLength);
         boolean isEmpty = textField.getText().isEmpty();
         boolean isFirstWhiteSpace = instEditDataService.isFirstWhiteSpace(textField.getText());
@@ -120,7 +120,7 @@ public class OptionPaneGUI extends EditDataGUI {
         }
     }
 
-    protected boolean isComboBoxValueChoosed(ComboBox comboBox,Label label){
+    public boolean isComboBoxValueChoosed(ComboBox comboBox,Label label){
         if(comboBox.getValue() != null){
             return true;
         }

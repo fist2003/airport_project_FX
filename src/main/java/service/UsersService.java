@@ -66,6 +66,17 @@ public class UsersService implements CRUDServiceInterface<Users>{
         Matcher mat = pat.matcher(value);
         return mat.matches();
     }
+
+    public Users checkInputUser(Users userParametr){
+        ArrayList<Users> allList = getAllService();
+        for (Users user:allList){
+            if ((userParametr.getLogin().toLowerCase().equals(user.getLogin().toLowerCase()))&&
+            (userParametr.getPassword().toLowerCase().equals(user.getPassword().toLowerCase()))){
+                return user;
+            }
+        }
+        return null;
+    }
 /*
     @Override
     protected ArrayList<String> checkInputValues(Entity entity) {

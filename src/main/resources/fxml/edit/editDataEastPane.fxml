@@ -32,7 +32,7 @@
                         <Insets right="145.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="cbType" onAction="#chooseType" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ComboBox fx:id="cbType" onAction="#chooseType" onHiding="#chooseType" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
                         <Insets left="170.0" />
                      </GridPane.margin>
@@ -42,7 +42,7 @@
                         <Insets right="135.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="cbOption" onAction="#chooseOption" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ComboBox fx:id="cbOption" onAction="#chooseOption" onHiding="#chooseOption" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
                         <Insets left="155.0" />
                      </GridPane.margin>

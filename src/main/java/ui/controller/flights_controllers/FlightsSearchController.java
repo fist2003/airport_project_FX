@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import service.SearchFlightsService;
+import ui.controller.main_controllers.MainPageController;
 import ui.view.FlightsGUI;
 
 import java.time.LocalDate;
@@ -89,6 +90,7 @@ public class FlightsSearchController extends FlightsGUI{
         else if(cbType.getValue().toString().equals(instSearchFlightService.getDeparturesTypeStr())){
             loadDepartureTable(cbDates.getValue(),cbDirection.getValue(),cbFlight.getValue());
         }
+
     }
 
     @FXML

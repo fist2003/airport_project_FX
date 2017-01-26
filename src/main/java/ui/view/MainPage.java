@@ -13,6 +13,14 @@ import java.io.IOException;
 
 public class MainPage extends Application {
 
+    private static boolean isAdmin = false;
+    private static boolean isLogined = false;
+
+    public static boolean isIsAdmin() {return isAdmin;}
+    public static void setIsAdmin(boolean isAdmin) {MainPage.isAdmin = isAdmin;}
+    public static boolean isIsLogined() {return isLogined;}
+    public static void setIsLogined(boolean isLogined) {MainPage.isLogined = isLogined;}
+
     private VBox mainPane;
     @FXML
     protected Label labelName;

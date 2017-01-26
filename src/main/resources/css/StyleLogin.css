@@ -3,9 +3,28 @@
     -fx-min-width: 300;
     -fx-pref-width:300;
     -fx-max-width: 300;
-    -fx-min-height: 250;
-    -fx-pref-height: 250;
-    -fx-max-height: 250;
+    -fx-min-height: 150;
+    -fx-pref-height: 150;
+    -fx-max-height: 150;
+}
+#moduleRegister{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 300;
+    -fx-pref-width:300;
+    -fx-min-height: 350;
+    -fx-pref-height: 350;
+    -fx-max-height: 350;
+}
+
+.label{
+    -fx-min-width: 130;
+    -fx-pref-width:130;
+    -fx-max-width: 130;
+    -fx-min-height: 25;
+    -fx-pref-height: 25;
+    -fx-max-height: 25;
+    -fx-text-alignment: center;
+    -fx-font-size: 15;
 }
 
 .text-field{
