@@ -109,15 +109,16 @@ public class FlightsDAO extends ConnectToMySQLDAO implements DAOInterface<Flight
     @Override
     public ArrayList<Flights> getAllDAO() {
         ArrayList<Flights> list = new ArrayList<Flights>();
-        try(Statement st = getConnection().createStatement()){
-            st.execute(querryGetAll);
-            ResultSet rs = st.getResultSet();
-            while (rs.next()){
-                list.add(makeInstFlightAndPutValues(rs));
+        if(getConnection() != null) {
+            try (Statement st = getConnection().createStatement()) {
+                st.execute(querryGetAll);
+                ResultSet rs = st.getResultSet();
+                while (rs.next()) {
+                    list.add(makeInstFlightAndPutValues(rs));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
         }
         return list;
     }

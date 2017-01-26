@@ -48,6 +48,22 @@ public class MenuController extends MainPage{
     }
 
     @FXML
+    public void showAirlines(){
+        eastPane = new AirlinesGUI().getEastPane();
+        bottomPane.getChildren().remove(1);
+        bottomPane.getChildren().add(1,eastPane);
+        bottomPane.setHgrow(eastPane, Priority.ALWAYS);
+    }
+
+    @FXML
+    public void showCheckIn(){
+        eastPane = new CheckInGUI().getEastPane();
+        bottomPane.getChildren().remove(1);
+        bottomPane.getChildren().add(1,eastPane);
+        bottomPane.setHgrow(eastPane, Priority.ALWAYS);
+    }
+
+    @FXML
     public void showSearchPassengers(){
         eastPane = new SearchPassengersGUI().getEastPane();
         bottomPane.getChildren().remove(1);

@@ -53,7 +53,7 @@ public class AirplanesTableModel implements TableModelInterface {
     private void addDataToTable() {
         dataList.addAll(new AirplanesService().getAllForTableView());
         tableView.setItems(getDataList());
-        tableView.setPlaceholder(new Label("THERE AREN`T NO DATA"));
+        tableView.setPlaceholder(new Label("THERE IS NO DATA"));
     }
 
     @FXML

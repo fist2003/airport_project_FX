@@ -74,24 +74,25 @@ public class UsersDAO extends ConnectToMySQLDAO implements DAOInterface<Users> {
     @Override
     public ArrayList<Users> getAllDAO() {
         ArrayList<Users> list = new ArrayList<Users>();
-        try(Statement st = getConnection().createStatement()){
-            st.execute(querryGetAll);
-            ResultSet rs = st.getResultSet();
-            while (rs.next()){
-                Users instUsers = new Users();
-                instUsers.setId(rs.getInt("id"));
-                instUsers.setLastName(rs.getString("lastName"));
-                instUsers.setFirstName(rs.getString("firstName"));
-                instUsers.setLogin(rs.getString("login"));
-                instUsers.setPassword(rs.getString("password"));
-                instUsers.setSex(rs.getString("sex"));
-                instUsers.setEmail(rs.getString("email"));
-                instUsers.setIsAdmin(rs.getInt("isAdmin"));
-                list.add(instUsers);
+        if(getConnection() != null) {
+            try (Statement st = getConnection().createStatement()) {
+                st.execute(querryGetAll);
+                ResultSet rs = st.getResultSet();
+                while (rs.next()) {
+                    Users instUsers = new Users();
+                    instUsers.setId(rs.getInt("id"));
+                    instUsers.setLastName(rs.getString("lastName"));
+                    instUsers.setFirstName(rs.getString("firstName"));
+                    instUsers.setLogin(rs.getString("login"));
+                    instUsers.setPassword(rs.getString("password"));
+                    instUsers.setSex(rs.getString("sex"));
+                    instUsers.setEmail(rs.getString("email"));
+                    instUsers.setIsAdmin(rs.getInt("isAdmin"));
+                    list.add(instUsers);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
         }
         return list;
     }

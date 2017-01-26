@@ -60,7 +60,7 @@ public class ConnectToMySQLDAO {
         }
         try {
             Statement st = connection.createStatement();
-            String str = "CREATE DATABASE shevchenko_final_airport";
+            String str = "CREATE DATABASE final_airport_project_javafx";
             st.execute(str);
         }
         catch (SQLException e){

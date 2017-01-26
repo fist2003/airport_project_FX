@@ -59,14 +59,14 @@ public class ArrivalFlightsTableModel {
     private void addDataToTable(int jSliderValue,LocalDate datevalue){
         arrivalData.addAll(new FlightsArrivalService().makeListOfFlightsForScheduleTable(jSliderValue,datevalue));
         arrivalTable.setItems(getArrivalData());
-        arrivalTable.setPlaceholder(new Label("THERE AREN`T NO FLIGHTS"));
+        arrivalTable.setPlaceholder(new Label("THERE ARE NO FLIGHTS"));
         FlightsGUI.setShoowingDate(datevalue);
     }
 
     private void addDataToTable(Object dateValue,Object portValue,Object numberValue){
         arrivalData.addAll(new FlightsArrivalService().makeListOfFlightsForSearchTable(dateValue, portValue, numberValue));
         arrivalTable.setItems(getArrivalData());
-        arrivalTable.setPlaceholder(new Label("THERE AREN`T NO FLIGHTS"));
+        arrivalTable.setPlaceholder(new Label("THERE ARE NO FLIGHTS"));
     }
 
     @FXML

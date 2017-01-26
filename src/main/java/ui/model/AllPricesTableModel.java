@@ -56,7 +56,7 @@ public class AllPricesTableModel {
     private void addDataToTable(Object portDepartValue,Object portArrivevalue,Object dateDepartValue){
         pricesData.addAll(new PricesSortService().makeListOfFlightsSorted(portDepartValue,portArrivevalue,dateDepartValue));
         pricesTable.setItems(getArrivalData());
-        pricesTable.setPlaceholder(new Label("THERE ARE NOT FLIGHTS"));
+        pricesTable.setPlaceholder(new Label("THERE ARE NO FLIGHTS"));
     }
 
     @FXML

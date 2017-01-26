@@ -30,6 +30,14 @@
     -fx-pref-height: 130;
     -fx-max-height: 130;
 }
+#northEastPaneAirlines{
+    -fx-background-color: white;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 70;
+    -fx-pref-height: 70;
+    -fx-max-height: 70;
+}
 
 #topEastPane{
     -fx-background-color: white;
@@ -102,6 +110,14 @@
     -fx-min-height: 75;
     -fx-pref-height: 75;
     -fx-max-height: 75;
+}
+#optionEastPaneAirline{
+    -fx-background-color: #d8d9d8;
+    -fx-min-width: 630;
+    -fx-pref-width:630;
+    -fx-min-height: 5;
+    -fx-pref-height: 5;
+    -fx-max-height: 5;
 }
 
 #scheduleEastPane {

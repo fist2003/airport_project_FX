@@ -22,6 +22,19 @@ public class Passengers extends Entity {
     public Passengers() {}
 
     public Passengers(int id, String lastName, String firstName, String passportNumber, String sex, String birtday,
+                      String country, String classTicket, int flight_id) {
+        this.id = new SimpleIntegerProperty(id);
+        this.lastName = new SimpleStringProperty(lastName);
+        this.firstName = new SimpleStringProperty(firstName);
+        this.passportNumber = new SimpleStringProperty(passportNumber);
+        this.sex = new SimpleStringProperty(sex);
+        this.birtday = new SimpleStringProperty(birtday);
+        this.country = new SimpleStringProperty(country);
+        this.classTicket = new SimpleStringProperty(classTicket);
+        this.flight_id = new SimpleIntegerProperty(flight_id);
+    }
+
+    public Passengers(int id, String lastName, String firstName, String passportNumber, String sex, String birtday,
                       String country, String classTicket, int flight_id,String flight_number) {
         this.id = new SimpleIntegerProperty(id);
         this.lastName = new SimpleStringProperty(lastName);

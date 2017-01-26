@@ -55,7 +55,7 @@ public class PassengersTableModel {
     private void addDataToTable(ArrayList<Passengers> listPassengers){
         passengersData.addAll(listPassengers);
         passengersTable.setItems(getPassengersData());
-        passengersTable.setPlaceholder(new Label("THERE ARE NO DATA"));
+        passengersTable.setPlaceholder(new Label("THERE IS NO DATA"));
     }
 
     @FXML

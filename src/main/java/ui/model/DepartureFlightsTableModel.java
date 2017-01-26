@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
@@ -57,11 +58,13 @@ public class DepartureFlightsTableModel {
     private void addDataToTable(int jSliderValue,LocalDate datevalue){
         departureData.addAll(new FlightsDepartService().makeListOfFlightsForScheduleTable(jSliderValue, datevalue));
         departureTable.setItems(getDepartureData());
+        departureTable.setPlaceholder(new Label("THERE ARE NO FLIGHTS"));
         FlightsGUI.setShoowingDate(datevalue);
     }
 
     private void addDataToTable(Object dateValue,Object portValue,Object numberValue){
         departureData.addAll(new FlightsDepartService().makeListOfFlightsForSearchTable(dateValue, portValue, numberValue));
+        departureTable.setPlaceholder(new Label("THERE ARE NO FLIGHTS"));
         departureTable.setItems(getDepartureData());
     }
 

@@ -12,8 +12,8 @@
             <Button fx:id="btnFlights" mnemonicParsing="false" onAction="#showFlights" text="FLIGHTS" />
             <Button fx:id="btnPrices" mnemonicParsing="false" onAction="#showPrices" text="PRICES" />
             <Button mnemonicParsing="false" text="PLAN YOUR FLIGHT" />
-            <Button mnemonicParsing="false" text="AIRLINES" />
-            <Button mnemonicParsing="false" text="CHECK IN" />
+            <Button mnemonicParsing="false" onAction="#showAirlines" text="AIRLINES" />
+            <Button mnemonicParsing="false" onAction="#showCheckIn" text="CHECK IN" />
             <Button fx:id="btnPassengers" mnemonicParsing="false" onAction="#showPassengers" text="PASSENGERS" />
             <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#showSearchPassengers" text="SEARCH" />
             <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#showEditData" text="EDIT DATA" />

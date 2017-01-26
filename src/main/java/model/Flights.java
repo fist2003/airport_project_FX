@@ -29,6 +29,24 @@ public class Flights extends Entity{
     public Flights() {}
 
     public Flights(int id, String number, String departPort, String destinationPort, String dateDepart, String dateDestin,
+                   String timeDepart, String timeDestin, int priceEconom, int priceBusiness, int airplane_id) {
+        this.id = new SimpleIntegerProperty(id);
+        this.number = new SimpleStringProperty(number);
+        this.departPort = new SimpleStringProperty(departPort);
+        this.destinationPort = new SimpleStringProperty(destinationPort);
+        this.dateDepart = new SimpleStringProperty(dateDepart);
+        this.dateDestin = new SimpleStringProperty(dateDestin);
+        this.timeDepart = new SimpleStringProperty(timeDepart);
+        this.timeDestin = new SimpleStringProperty(timeDestin);
+        this.priceEconom = new SimpleIntegerProperty(priceEconom);
+        this.priceBusiness = new SimpleIntegerProperty(priceBusiness);
+        this.airplane_id = new SimpleIntegerProperty(airplane_id);
+        this.statusOfFlight =   new SimpleStringProperty("");
+        this.currentTime =   new SimpleStringProperty("");
+        this.gateName =   new SimpleStringProperty("");
+    }
+
+    public Flights(int id, String number, String departPort, String destinationPort, String dateDepart, String dateDestin,
                    String timeDepart, String timeDestin, int priceEconom, int priceBusiness, int airplane_id,
                    String statusOfFlight,String gateName, String currentTime) {
         this.id = new SimpleIntegerProperty(id);

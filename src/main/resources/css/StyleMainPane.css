@@ -8,7 +8,8 @@
 }
 
 #topPane{
-    -fx-background-color: #2A2B2A;
+    /*-fx-background-color: #2A2B2A;*/
+    -fx-background-color: black;
     -fx-min-width: 800;
     -fx-pref-width: 800;
     -fx-min-height: 25;
@@ -16,9 +17,27 @@
     -fx-max-height: 25;
 }
 #btnLogin{
-    -fx-background-color: #000000;
     -fx-pref-width: 100;
-    -fx-pref-height: 20;
+    -fx-pref-height: 25;
+    -fx-max-height: 25;
+    -fx-background-color: black;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-font-weight: lighter;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+
+#btnLogin:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 100% to 0% 93%, rgba(92, 89, 90, 0.73) 0%, #242424 100%),
+            #242424,
+            #300909
+
+}
+#btnLogin:pressed {
+    -fx-padding: 5 14 5 14;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
 }
 
 #centerPane{

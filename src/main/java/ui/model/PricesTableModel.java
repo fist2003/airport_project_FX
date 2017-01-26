@@ -64,7 +64,7 @@ public class PricesTableModel {
         }
         pricesData.addAll(data);
         pricesTable.setItems(getArrivalData());
-        pricesTable.setPlaceholder(new Label("THERE ARE NOT FLIGHTS"));
+        pricesTable.setPlaceholder(new Label("THERE IS NO FLIGHTS"));
     }
 
     @FXML
