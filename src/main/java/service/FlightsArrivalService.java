@@ -79,51 +79,49 @@ public class FlightsArrivalService extends ServiceAbstract implements ScheduleTa
         LocalDate curDate = LocalDate.now();
         LocalTime timeNow = LocalTime.now();
         for (Flights flight : listAllArrivalFlightsByDate) {
-            String status = null;
-            String currentTimeArrive = null;
-            String gateName = null;
+            String status = flight.getStatusOfFlight();
+            String currentTimeArrive = flight.getCurrentTime();
+            String gateName = flight.getGateName();
             LocalDate dateArrive = convertStringToLocalDate(flight.getDateDestin());
             LocalTime timeArrive = LocalTime.parse(flight.getTimeDestin());
             LocalTime timeDepart = LocalTime.parse(flight.getTimeDepart());
-            if (dateArrive.equals(curDate)) {
-                if (getDifferenceInTime(timeDepart, timeNow) >= 0) {
-                    status = onTimeStatus;
-                } else if ((getDifferenceInTime(timeArrive, timeNow) >= 0) && (getDifferenceInTime(timeDepart, timeNow) <= 0)) {
-                    status = inFlightStatus;
-                } else if (getDifferenceInTime(timeArrive, timeNow) < 0) {
+            if (status == null) {
+                if (dateArrive.equals(curDate)) {
+                    if (getDifferenceInTime(timeDepart, timeNow) >= 0) {
+                        status = onTimeStatus;
+                    } else if ((getDifferenceInTime(timeArrive, timeNow) >= 0) && (getDifferenceInTime(timeDepart, timeNow) <= 0)) {
+                        status = inFlightStatus;
+                    } else if (getDifferenceInTime(timeArrive, timeNow) < 0) {
+                        status = arrivedStatus;
+                        currentTimeArrive = timeArrive.toString();
+                        gateName = gateNameA1;
+                    }
+                } else if (dateArrive.isBefore(curDate)) {
                     status = arrivedStatus;
                     currentTimeArrive = timeArrive.toString();
                     gateName = gateNameA1;
+                } else if (dateArrive.isAfter(curDate)) {
+                    status = byScheduleStatus;
+                }
+                flight.setStatusOfFlight(status);
+                flight.setCurrentTime(currentTimeArrive);
+                flight.setGateName(gateName);
+            }
+                int valueJSliderModul = Math.abs((jSliderValue));
+                String valueJSliderStr = "";
+                if (valueJSliderModul < 10) {
+                    valueJSliderStr = "0" + valueJSliderModul + ":00:00";
+                } else if (valueJSliderModul == 24) {
+                    valueJSliderStr = "23:59:59";
+                } else {
+                    valueJSliderStr = valueJSliderModul + ":00:00";
+                }
+                LocalTime jSliderTime = LocalTime.parse(valueJSliderStr);
+                int a = getDifferenceInTime(jSliderTime, timeArrive);
+                if (a <= 0) {
+                    listArrivalFlightsByJSlider.add(flight);
                 }
             }
-            else if (dateArrive.isBefore(curDate)) {
-                status = arrivedStatus;
-                currentTimeArrive = timeArrive.toString();
-                gateName = gateNameA1;
-            }
-            else if (dateArrive.isAfter(curDate)) {
-                status = byScheduleStatus;
-            }
-            flight.setStatusOfFlight(status);
-            flight.setCurrentTime(currentTimeArrive);
-            flight.setGateName(gateName);
-            int valueJSliderModul = Math.abs((jSliderValue));
-            String valueJSliderStr = "";
-            if (valueJSliderModul < 10) {
-                valueJSliderStr = "0" + valueJSliderModul + ":00:00";
-            }
-            else if(valueJSliderModul == 24){
-                valueJSliderStr = "23:59:59";
-            }
-            else {
-                valueJSliderStr = valueJSliderModul + ":00:00";
-            }
-            LocalTime jSliderTime = LocalTime.parse(valueJSliderStr);
-            int a = getDifferenceInTime(jSliderTime, timeArrive);
-            if (a <= 0) {
-                listArrivalFlightsByJSlider.add(flight);
-            }
-        }
         return listArrivalFlightsByJSlider;
     }
 

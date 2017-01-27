@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import model.Passengers;
-import service.FlightsService;
 import service.PassengersService;
 import ui.view.OptionPaneGUI;
 
@@ -37,7 +36,6 @@ public class RegisterPassengerController extends OptionPaneGUI {
     @FXML
     private DatePicker birthdayPicker;
 
-
     @FXML
     private ComboBox cbSex;
     @FXML
@@ -51,7 +49,6 @@ public class RegisterPassengerController extends OptionPaneGUI {
     private TextField tfPassport;
     @FXML
     private TextField tfCountry;
-
 
     @FXML
     private Label labelLastName;
@@ -182,14 +179,6 @@ public class RegisterPassengerController extends OptionPaneGUI {
             if(!value){check = false;}
         }
         return check;
-    }
-
-    private String getComboBoxStringValue(ComboBox comboBox){
-        String result = "";
-        if (comboBox.getValue() != null){
-            result = comboBox.getValue().toString();
-        }
-        return result;
     }
 
 }

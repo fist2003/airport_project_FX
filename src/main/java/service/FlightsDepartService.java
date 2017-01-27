@@ -79,40 +79,40 @@ public class FlightsDepartService extends ServiceAbstract implements ScheduleTab
         LocalDate curDate = LocalDate.now();
         LocalTime timeNow = LocalTime.now();
         for (Flights flight : listAllDepartFlightsByDate) {
-            String status = null;
-            String currentTimeDepart = null;
-            String gateName = null;
+            String status = flight.getStatusOfFlight();
+            String currentTimeDepart = flight.getCurrentTime();
+            String gateName = flight.getGateName();
             LocalDate dateDepart = convertStringToLocalDate(flight.getDateDepart());
             LocalTime timeDepart = LocalTime.parse(flight.getTimeDepart());
-            if (dateDepart.equals(curDate)) {
-                if (getDifferenceInTime(timeDepart, timeNow) >= (60 * 60 * 2)) {
-                    status = onTimeStatus;
-                } else if ((getDifferenceInTime(timeDepart, timeNow) < (60 * 60 * 2)) && (getDifferenceInTime(timeDepart, timeNow) >= (45 * 60))) {
-                    status = checkInStatus;
-                    gateName = gateNameB1;
-                } else if ((getDifferenceInTime(timeDepart, timeNow) < (45 * 60)) && (getDifferenceInTime(timeDepart, timeNow) >= (30 * 60))) {
-                    status = gateClosedStatus;
-                    gateName = gateNameB1;
-                } else if ((getDifferenceInTime(timeDepart, timeNow) < (30 * 60)) && (getDifferenceInTime(timeDepart, timeNow) > (0))) {
-                    status = gateClosedStatus;
-                    gateName = gateNameB1;
-                } else if (getDifferenceInTime(timeDepart, timeNow) <= 0) {
+            if (status == null) {
+                if (dateDepart.equals(curDate)) {
+                    if (getDifferenceInTime(timeDepart, timeNow) >= (60 * 60 * 2)) {
+                        status = onTimeStatus;
+                    } else if ((getDifferenceInTime(timeDepart, timeNow) < (60 * 60 * 2)) && (getDifferenceInTime(timeDepart, timeNow) >= (45 * 60))) {
+                        status = checkInStatus;
+                        gateName = gateNameB1;
+                    } else if ((getDifferenceInTime(timeDepart, timeNow) < (45 * 60)) && (getDifferenceInTime(timeDepart, timeNow) >= (30 * 60))) {
+                        status = gateClosedStatus;
+                        gateName = gateNameB1;
+                    } else if ((getDifferenceInTime(timeDepart, timeNow) < (30 * 60)) && (getDifferenceInTime(timeDepart, timeNow) > (0))) {
+                        status = gateClosedStatus;
+                        gateName = gateNameB1;
+                    } else if (getDifferenceInTime(timeDepart, timeNow) <= 0) {
+                        status = departedStatus;
+                        gateName = gateNameB1;
+                        currentTimeDepart = flight.getTimeDepart();
+                    }
+                } else if (dateDepart.isBefore(curDate)) {
                     status = departedStatus;
                     gateName = gateNameB1;
                     currentTimeDepart = flight.getTimeDepart();
+                } else if (dateDepart.isAfter(curDate)) {
+                    status = byScheduleStatus;
                 }
+                flight.setStatusOfFlight(status);
+                flight.setCurrentTime(currentTimeDepart);
+                flight.setGateName(gateName);
             }
-            else if (dateDepart.isBefore(curDate)) {
-                status = departedStatus;
-                gateName = gateNameB1;
-                currentTimeDepart = flight.getTimeDepart();
-            }
-            else if (dateDepart.isAfter(curDate)) {
-                status = byScheduleStatus;
-            }
-            flight.setStatusOfFlight(status);
-            flight.setCurrentTime(currentTimeDepart);
-            flight.setGateName(gateName);
             int valueJSliderModul = Math.abs((jSliderValue));
             String valueJSliderStr = "";
             if (valueJSliderModul < 10) {

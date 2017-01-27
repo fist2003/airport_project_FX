@@ -41,9 +41,9 @@ public class Flights extends Entity{
         this.priceEconom = new SimpleIntegerProperty(priceEconom);
         this.priceBusiness = new SimpleIntegerProperty(priceBusiness);
         this.airplane_id = new SimpleIntegerProperty(airplane_id);
-        this.statusOfFlight =   new SimpleStringProperty("");
-        this.currentTime =   new SimpleStringProperty("");
-        this.gateName =   new SimpleStringProperty("");
+        this.statusOfFlight =   new SimpleStringProperty(null);
+        this.currentTime =   new SimpleStringProperty(null);
+        this.gateName =   new SimpleStringProperty(null);
     }
 
     public Flights(int id, String number, String departPort, String destinationPort, String dateDepart, String dateDestin,

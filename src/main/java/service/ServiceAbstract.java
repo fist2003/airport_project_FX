@@ -31,6 +31,7 @@ public abstract class ServiceAbstract {
 
     protected final String gateNameA1 = "A1";
     protected final String gateNameB1 = "B1";
+    protected final String gateNameEmpty = "";
 
     protected final String arrivalsTypeStr = "ARRIVALS";
     protected final String departuresTypeStr = "DEPARTURES";
@@ -57,6 +58,7 @@ public abstract class ServiceAbstract {
         ArrayList<String> gatesList = new ArrayList<String>();
         gatesList.add(gateNameA1);
         gatesList.add(gateNameB1);
+        gatesList.add(gateNameEmpty);
         return gatesList;
     }
 
