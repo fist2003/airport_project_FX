@@ -11,7 +11,7 @@
          <children>
             <Button fx:id="btnFlights" mnemonicParsing="false" onAction="#showFlights" text="FLIGHTS" />
             <Button fx:id="btnPrices" mnemonicParsing="false" onAction="#showPrices" text="PRICES" />
-            <Button mnemonicParsing="false" text="PLAN YOUR FLIGHT" />
+            <Button mnemonicParsing="false" onAction="#showPlanFlight" text="PLAN YOUR FLIGHT" />
             <Button mnemonicParsing="false" onAction="#showAirlines" text="AIRLINES" />
             <Button mnemonicParsing="false" onAction="#showCheckIn" text="CHECK IN" />
             <Button fx:id="btnPassengers" mnemonicParsing="false" onAction="#showPassengers" text="PASSENGERS" />

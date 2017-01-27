@@ -4,9 +4,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
+import model.Entity;
+import model.Flights;
+import model.Passengers;
+import service.EditDataService;
 import service.PricesSortService;
+import ui.view.OptionPaneGUI;
 import ui.view.PricesGUI;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 /**
@@ -16,9 +24,12 @@ public class PricesAllController extends PricesGUI {
 
     public PricesAllController(){}
 
-
-
+    private final String registerPassengerFXML = "/fxml/prices/registerPassenger.fxml";
+    private static Integer flight_id = null;
     private PricesSortService instPricesSortService = new PricesSortService();
+
+    public static Integer getFlight_id() {return flight_id;}
+    public static void setFlight_id(Integer flight_id) {PricesAllController.flight_id = flight_id;}
 
     private ObservableList<String> cbTicketClassObservList = FXCollections.observableList(instPricesSortService.getListForCbTicketClass());
 
@@ -88,6 +99,33 @@ public class PricesAllController extends PricesGUI {
     @FXML
     public void chooseRefresh(){
         loadAllPrices();
+    }
+
+    @FXML
+    public void chooseRefreshPlanFlight(){
+        loadPlanFlightPane();
+    }
+
+    @FXML
+    public void registerPassenger(){
+        EditDataService instEditDataServi = new EditDataService();
+        OptionPaneGUI insOptionPaneGUI = new OptionPaneGUI();
+        Flights instFlight = null;
+        tablePane = (BorderPane)eastPane.getChildren().get(1);
+        try {
+            TableView tableView = (TableView) tablePane.getChildren().get(0);
+            instFlight = (Flights) tableView.getSelectionModel().getSelectedItem();
+        }
+        catch (ClassCastException e){}
+        if (instFlight != null) {
+            flight_id = instFlight.getId();
+            boolean check = insOptionPaneGUI.displayOptionPaneInsert(instEditDataServi.getInsertNewOptionStr(),
+                    registerPassengerFXML);
+            if (check) {
+                loadPlanFlightPane();
+            }
+        }
+        else flight_id = null;
     }
 
     @FXML

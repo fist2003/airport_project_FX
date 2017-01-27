@@ -18,9 +18,9 @@ public class PutStartDataService {
 
     private void addAirlines(){
         AirlinesService instAirlineService = new AirlinesService();
-        instAirlineService.insertNewService(new Airlines(0,"AERO JET","Ukraine,Odessa,Odessa International Airport","8 048 777 83 03","www.flyaerojet.aero"));
-        instAirlineService.insertNewService(new Airlines(0,"AZUR AIR","Ukraine,Odessa,Odessa International Airport","8 048  726 27 87","www.uhc.kiev.ua"));
-        instAirlineService.insertNewService(new Airlines(0,"Turkish Airlines","Ukraine,Odessa, Zhukovskogo str. 26/28","8 0482 34 79 06","www.turkishairlines.com"));
+        instAirlineService.insertNewService(new Airlines(0,"AERO JET","Ukraine,Odessa,Odessa International Airport","(048)-777-8303","www.flyaerojet.aero"));
+        instAirlineService.insertNewService(new Airlines(0,"AZUR AIR","Ukraine,Odessa,Odessa International Airport","(048)-726-2787","www.uhc.kiev.ua"));
+        instAirlineService.insertNewService(new Airlines(0,"Turkish Airlines","Ukraine,Odessa, Zhukovskogo str. 26/28","(048)-234-7906","www.turkishairlines.com"));
     }
 
     private void addAirplanes(){

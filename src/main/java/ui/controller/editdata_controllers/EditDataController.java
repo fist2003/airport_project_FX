@@ -27,6 +27,10 @@ public class EditDataController extends EditDataGUI {
 
     protected static String choose;
 
+    public static void setChoose(String choose) {
+        EditDataController.choose = choose;
+    }
+
     @FXML
     protected ComboBox cbType;
 
@@ -56,7 +60,7 @@ public class EditDataController extends EditDataGUI {
     }
 
     protected void chooseOptionAll(){
-        if(cbOption.getValue() != null) {
+        if((cbOption.getValue() != null)&&(choose != null)) {
             String optionValue = cbOption.getValue().toString();
             if (optionValue.equals(instEditDataService.getInsertNewOptionStr())) {
                 if ((choose != null) && (getMapModulePaneFXML().containsKey(choose))) {

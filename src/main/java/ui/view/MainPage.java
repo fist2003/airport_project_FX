@@ -29,11 +29,6 @@ public class MainPage extends StartPageGUI {
     @FXML
     protected VBox eastPane;
 
-   /* public static void main(String[] args) throws Exception {
-       // new ConnectToMySQLDAO().connectToDB("password");
-        launch(args);
-    }*/
-
     @Override
     public void start(Stage stage) throws Exception {
 

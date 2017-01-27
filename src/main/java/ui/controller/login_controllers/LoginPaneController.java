@@ -37,6 +37,7 @@ public class LoginPaneController extends LoginPaneGUI {
         user.setPassword(pfPassword.getText());
         Users checkedUser = new UsersService().checkInputUser(user);
         if (checkedUser != null){
+            UsersService.setUserLoginedName(checkedUser.getLogin());
             MainPage.setIsLogined(true);
             switch (checkedUser.getIsAdmin()){
                 case 1:MainPage.setIsAdmin(true);

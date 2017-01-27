@@ -26,12 +26,19 @@ public class PricesGUI extends MainPage {
     public static String getCheckClass(){return checkClass;}
     protected static void setCheckClass(String checkClass) {PricesGUI.checkClass = checkClass;}
 
+    private final String planFlightPaneFxmlUrl = "/fxml/PlanFlight.fxml";
+
     public VBox getEastPane() {
         loadDepartPrices();
         return eastPane;
     }
 
-    private BorderPane tablePane;
+    public VBox getPlanFlightEastPane() {
+        loadPlanFlightPane();
+        return eastPane;
+    }
+
+    protected BorderPane tablePane;
 
     protected void loadDepartPrices(){
         isDepartChoosed = true;
@@ -91,6 +98,25 @@ public class PricesGUI extends MainPage {
         pane.setVgrow(tablePane, Priority.ALWAYS);
         eastPane.getChildren().add(pane);
         eastPane.setVgrow(pane, Priority.ALWAYS);
+    }
+
+    protected void loadPlanFlightPane(){
+        if (eastPane != null){eastPane.getChildren().clear();}
+        FXMLLoader loaderEastPane = new FXMLLoader();
+        VBox pane = new VBox();
+        try {
+            pane = (VBox) loaderEastPane.load(getClass().getResourceAsStream(planFlightPaneFxmlUrl));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        tablePane = getEmptyTablePane(tablePane);
+        pane.getChildren().remove(1);
+        pane.getChildren().add(1,tablePane);
+        pane.setVgrow(tablePane, Priority.ALWAYS);
+        if (eastPane != null){
+            eastPane.getChildren().add(pane);
+            eastPane.setVgrow(pane, Priority.ALWAYS);}
+        else eastPane = pane;
     }
 
     protected void loadPricesTable(Object directionValue,Object dateDepartValue,Object timeDepartValue){

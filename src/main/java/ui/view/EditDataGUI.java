@@ -45,7 +45,7 @@ public class EditDataGUI extends MainPage {
 
     protected Map<String, String> getMapPaneFXML() {return mapPaneFXML;}
     protected Map<String, TableModelInterface> getMapTableModel() {return mapTableModel;}
-    protected Map<String, String> getMapModulePaneFXML() {return mapModulePaneFXML;}
+    public Map<String, String> getMapModulePaneFXML() {return mapModulePaneFXML;}
 
     protected final String editDataAirlinePaneUrl = "/fxml/edit/editDataAirline.fxml";
     protected final String airlineModuleUrl = "/fxml/edit/moduleAirline.fxml";

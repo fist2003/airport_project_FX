@@ -51,6 +51,8 @@ public class OptionPaneAirlineController extends OptionPaneGUI{
 
     @FXML
     public void initialize() {
+        tfTelephone.setPromptText("(048)-455-55-55");
+        tfWebsite.setPromptText("www.web.site");
        if (getEntity() != null){
            instAirline = (Airlines)getEntity();
            tfName.setText(instAirline.getName());
@@ -148,10 +150,11 @@ public class OptionPaneAirlineController extends OptionPaneGUI{
             labelTelephone.setText("");
             return true;
         }
-        else if((isInputCorrect(tfTelephone,labelTelephone)&&(instEditDataService.isInputNumber(tfTelephone.getText())))){
+        else if(validatePhoneNumber(tfTelephone.getText())){
+            labelTelephone.setText("");
             return true;
         }
-        else if(!instEditDataService.isInputNumber(tfTelephone.getText())){
+        else {
             labelTelephone.setText("Wrong telephone number");
         }
         return false;
@@ -163,12 +166,27 @@ public class OptionPaneAirlineController extends OptionPaneGUI{
             return true;
         }
         else if((isInputCorrect(tfWebsite,labelWebsite)&&(instEditDataService.isWebsite(tfWebsite.getText())))){
+            labelWebsite.setText("");
             return true;
         }
         else if(!instEditDataService.isWebsite(tfWebsite.getText())){
             labelWebsite.setText("Wrong website");
         }
         return false;
+    }
+
+    private boolean validatePhoneNumber(String phoneNo) {
+        //validate phone numbers of format "1234567890"
+        if (phoneNo.matches("\\d{10}")) return true;
+            //validating phone number with -, . or spaces
+        else if(phoneNo.matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}")) return true;
+            //validating phone number with extension length from 3 to 5
+        else if(phoneNo.matches("\\d{3}-\\d{3}-\\d{4}\\s(x|(ext))\\d{3,5}")) return true;
+            //validating phone number where area code is in braces ()
+        else if(phoneNo.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) return true;
+            //return false if nothing matches the input
+        else return false;
+
     }
 
 

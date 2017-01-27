@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Users;
 import service.UsersService;
+import ui.view.LoginPaneGUI;
 import ui.view.OptionPaneGUI;
 
 /**
@@ -140,8 +141,13 @@ public class OptionPaneUserController extends OptionPaneGUI {
         }
 
         if(isDeleteSelected){
-            instUsers.setId(getEntity().getId());
-            instUsersService.deleteDataService((Users) getEntity());
+            instUsers = (Users)getEntity();
+            if(!instUsers.getLogin().toLowerCase().equals(UsersService.getUserLoginedName().toLowerCase())){
+                instUsersService.deleteDataService((Users) getEntity());
+            }
+            else {
+                displayErrorDialog("This user is already logined. Before delete you must logout");
+            }
         }
         Stage stage = (Stage) btnOk.getScene().getWindow();
         stage.close();
