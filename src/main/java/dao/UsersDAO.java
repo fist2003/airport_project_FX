@@ -24,20 +24,23 @@ public class UsersDAO extends ConnectToMySQLDAO implements DAOInterface<Users> {
 
     @Override
     public boolean insertNewDAO(Users user) {
-        try (PreparedStatement ps = getConnection().prepareStatement(querryInsert)) {
-            ps.setString(1, user.getLogin());
-            ps.setString(2, user.getPassword());
-            ps.setString(3, user.getEmail());
-            ps.setString(4, user.getLastName());
-            ps.setString(5, user.getFirstName());
-            ps.setString(6, user.getSex());
-            ps.setInt(7, user.getIsAdmin());
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+        if(getConnection() != null) {
+            try (PreparedStatement ps = getConnection().prepareStatement(querryInsert)) {
+                ps.setString(1, user.getLogin());
+                ps.setString(2, user.getPassword());
+                ps.setString(3, user.getEmail());
+                ps.setString(4, user.getLastName());
+                ps.setString(5, user.getFirstName());
+                ps.setString(6, user.getSex());
+                ps.setInt(7, user.getIsAdmin());
+                ps.executeUpdate();
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
         }
+        return false;
     }
 
     @Override

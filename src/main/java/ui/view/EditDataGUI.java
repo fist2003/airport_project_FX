@@ -67,7 +67,7 @@ public class EditDataGUI extends MainPage {
         return eastPane;
     }
 
-    private BorderPane tablePane;
+    protected BorderPane tablePane;
 
     protected void loadEditMenu(){
         if (eastPane != null){eastPane.getChildren().clear();}

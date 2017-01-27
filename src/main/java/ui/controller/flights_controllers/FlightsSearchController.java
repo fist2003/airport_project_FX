@@ -62,34 +62,34 @@ public class FlightsSearchController extends FlightsGUI{
         cbDates.setItems(getDateObservList(cbType.getValue().toString(),null,null));
         cbDirection.setItems(getPortsObservList(cbType.getValue().toString(),null,null));
         cbFlight.setItems(getFlightsNumbersObservList(cbType.getValue().toString(),null,null));
+        showSortedTable();
     }
 
     @FXML
     public void chooseDate(){
         cbDirection.setItems(getPortsObservList(cbType.getValue().toString(),cbDates.getValue(),cbFlight.getValue()));
         cbFlight.setItems(getFlightsNumbersObservList(cbType.getValue().toString(),cbDates.getValue(),cbDirection.getValue()));
+        showSortedTable();
     }
 
     @FXML
     public void choosePort(){
             cbDates.setItems(getDateObservList(cbType.getValue().toString(), cbDirection.getValue(), cbFlight.getValue()));
             cbFlight.setItems(getFlightsNumbersObservList(cbType.getValue().toString(), cbDates.getValue(), cbDirection.getValue()));
+            showSortedTable();
     }
 
     @FXML
     public void chooseNumber(){
             cbDates.setItems(getDateObservList(cbType.getValue().toString(), cbDirection.getValue(), cbFlight.getValue()));
             cbDirection.setItems(getPortsObservList(cbType.getValue().toString(), cbDates.getValue(), cbFlight.getValue()));
+            showSortedTable();
     }
 
     @FXML
-    public void searchFlight(){
-        if(cbType.getValue().toString().equals(instSearchFlightService.getArrivalsTypeStr())){
-            loadArrivalTable(cbDates.getValue(),cbDirection.getValue(),cbFlight.getValue());
-        }
-        else if(cbType.getValue().toString().equals(instSearchFlightService.getDeparturesTypeStr())){
-            loadDepartureTable(cbDates.getValue(),cbDirection.getValue(),cbFlight.getValue());
-        }
+    public void chooseRefresh(){
+        loadSearchEastPane();
+
 
     }
 
@@ -102,6 +102,15 @@ public class FlightsSearchController extends FlightsGUI{
     @FXML
     public void showSearch(){
         loadSearchEastPane();
+    }
+
+    private void showSortedTable(){
+        if(cbType.getValue().toString().equals(instSearchFlightService.getArrivalsTypeStr())){
+            loadArrivalTable(cbDates.getValue(),cbDirection.getValue(),cbFlight.getValue());
+        }
+        else if(cbType.getValue().toString().equals(instSearchFlightService.getDeparturesTypeStr())){
+            loadDepartureTable(cbDates.getValue(),cbDirection.getValue(),cbFlight.getValue());
+        }
     }
 
 

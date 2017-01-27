@@ -12,6 +12,7 @@ import model.Flights;
 import service.FlightsService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by slavik on 25.01.2017.
@@ -62,8 +63,19 @@ public class FlightsTableModel implements TableModelInterface {
         return tablePane;
     }
 
+    public BorderPane getTablePane(ArrayList<Flights> arrayList) {
+        loadTablePane(arrayList);
+        return tablePane;
+    }
+
     private void addDataToTable() {
-        dataList.addAll(new FlightsService().getAllForTableView());
+        dataList.addAll(new FlightsService().getAllForTableView(new FlightsService().getAllService()));
+        tableView.setItems(getDataList());
+        tableView.setPlaceholder(new Label("THERE IS NO DATA"));
+    }
+
+    private void addDataToTable(ArrayList arrayList) {
+        dataList.addAll(arrayList);
         tableView.setItems(getDataList());
         tableView.setPlaceholder(new Label("THERE IS NO DATA"));
     }
@@ -94,5 +106,16 @@ public class FlightsTableModel implements TableModelInterface {
         }
         FlightsTableModel controller = loaderTablePane.getController();
         controller.addDataToTable();
+    }
+
+    private void loadTablePane(ArrayList arrayList){
+        FXMLLoader loaderTablePane = new FXMLLoader();
+        try {
+            tablePane = (BorderPane) loaderTablePane.load(getClass().getResourceAsStream(tablePaneFxmlFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FlightsTableModel controller = loaderTablePane.getController();
+        controller.addDataToTable(arrayList);
     }
 }

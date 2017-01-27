@@ -36,15 +36,11 @@ public class FlightsService implements CRUDServiceInterface<Flights> {
         return instFlightsDAO.getByIdDAO(flight);
     }
 
-    public ArrayList<Flights> getAllForTableView(){
-        ArrayList<Flights> allList = getAllService();
-        ArrayList<Airplanes> allAirplaneslist = new AirplanesService().getAllService();
+    public ArrayList<Flights> getAllForTableView(ArrayList<Flights> allList){
         for (Flights flight:allList){
-            for (Airplanes airplane:allAirplaneslist){
-                if(airplane.getId() == flight.getAirplane_id()){
-                    flight.setAirplane_number(airplane.getNumberISO());
-                }
-            }
+            Airplanes airplane = new Airplanes();
+            airplane.setId(flight.getAirplane_id());
+            flight.setAirplane_number(new AirplanesService().getByIdService(airplane).getNumberISO());
         }
         return allList;
     }

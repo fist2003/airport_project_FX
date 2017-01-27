@@ -138,6 +138,32 @@ public abstract class ServiceAbstract {
         return listFlightsByDestinPort;
     }
 
+    protected ArrayList<Flights> getListFlightsByDateDepart(ArrayList<Flights> arrayList,Object dateDepartValue){
+        ArrayList<Flights> listFlights = new ArrayList<>();
+        if(dateDepartValue != null) {
+            for (Flights flight : arrayList) {
+                if (convertStringToLocalDate(flight.getDateDepart()).isEqual(convertStringToLocalDate(dateDepartValue.toString()))) {
+                    listFlights.add(flight);
+                }
+            }
+        }
+        else {listFlights.addAll(arrayList);}
+        return listFlights;
+    }
+
+    protected ArrayList<Flights> getListFlightsByTimeDepart(ArrayList<Flights> arrayList,Object timeDepartValue){
+        ArrayList<Flights> listFlights = new ArrayList<>();
+        if(timeDepartValue != null) {
+            for (Flights flight : arrayList) {
+                if (flight.getTimeDepart().equals(timeDepartValue.toString())) {
+                    listFlights.add(flight);
+                }
+            }
+        }
+        else {listFlights.addAll(arrayList);}
+        return listFlights;
+    }
+
     protected ArrayList<Flights> getListFlightsByPrice(ArrayList<Flights> arrayList,Object priceValue){
         ArrayList<Flights> listFlightsByPrice = new ArrayList<>();
         if(priceValue != null) {
@@ -173,6 +199,27 @@ public abstract class ServiceAbstract {
             listString.add(flight.getDestinationPort());
         }
         return checkingForRepeatString(listString);
+    }
+
+    protected ArrayList<String> getListTimeDeparts(ArrayList<Flights> arrayList){
+        ArrayList<String> listString = new ArrayList<>();
+        for (Flights flight : arrayList) {
+            listString.add(flight.getTimeDepart());
+        }
+        return checkingForRepeatString(listString);
+    }
+
+    protected ArrayList<LocalDate> getListDatesDepart(ArrayList<Flights> arrayList){
+        ArrayList<String> listString = new ArrayList<>();
+        for (Flights flight : arrayList) {
+            listString.add(flight.getDateDepart());
+        }
+        ArrayList<String> checked = checkingForRepeatString(listString);
+        ArrayList<LocalDate> listDates = new ArrayList<>();
+        for(int i = 0; i < checked.size(); i++){
+           listDates.add(convertStringToLocalDate(checked.get(i)));
+        }
+        return listDates;
     }
 
     protected ArrayList<Integer> getListPrices(ArrayList<Flights> arrayList){

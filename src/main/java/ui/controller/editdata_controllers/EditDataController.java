@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import model.Airlines;
 import model.Entity;
+import service.EditDataSortService;
 import ui.view.EditDataGUI;
 import ui.view.OptionPaneGUI;
 
@@ -19,10 +20,12 @@ public class EditDataController extends EditDataGUI {
 
     public EditDataController(){}
 
-    private ObservableList<String> typeDataObservList = FXCollections.observableList(instEditDataService.getTypeList());
-    private ObservableList<String> optionsObservList = FXCollections.observableList(instEditDataService.getOptionList());
+    protected EditDataSortService instEditDataSortService = new EditDataSortService();
 
-    private static String choose;
+    protected ObservableList<String> typeDataObservList = FXCollections.observableList(instEditDataService.getTypeList());
+    protected ObservableList<String> optionsObservList = FXCollections.observableList(instEditDataService.getOptionList());
+
+    protected static String choose;
 
     @FXML
     protected ComboBox cbType;
@@ -48,7 +51,11 @@ public class EditDataController extends EditDataGUI {
     }
 
     @FXML
-    public void chooseOption(){
+    private void chooseOption(){
+       chooseOptionAll();
+    }
+
+    protected void chooseOptionAll(){
         if(cbOption.getValue() != null) {
             String optionValue = cbOption.getValue().toString();
             if (optionValue.equals(instEditDataService.getInsertNewOptionStr())) {
@@ -59,9 +66,9 @@ public class EditDataController extends EditDataGUI {
                     }
                 }
             } else if ((optionValue.equals(instEditDataService.getEditOptionStr())) || (optionValue.equals(instEditDataService.getDeleteOptionStr()))) {
-                VBox vbox = (VBox) cbType.getParent().getParent().getParent();
-                BorderPane borderPane = (BorderPane) vbox.getChildren().get(1);
-                TableView tableView = (TableView) borderPane.getChildren().get(0);
+
+                tablePane = (BorderPane)eastPane.getChildren().get(1);
+                TableView tableView = (TableView) tablePane.getChildren().get(0);
                 Entity instEntity = (Entity) tableView.getSelectionModel().getSelectedItem();
                 if ((choose != null) && (getMapModulePaneFXML().containsKey(choose)) && (instEntity != null)) {
                     boolean check = new OptionPaneGUI().displayOptionPaneEdit(optionValue, getMapModulePaneFXML().get(choose), instEntity);

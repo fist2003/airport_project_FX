@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,8 +12,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox id="eastPane" fx:id="eastPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/StyleEastPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.editdata_controllers.EditDataController">
+<VBox id="eastPane" fx:id="eastPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/StyleEastPane.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.editdata_controllers.FlightsEditDataController">
    <children>
       <VBox id="northEastPane" maxHeight="156.0" prefHeight="156.0" prefWidth="100.0">
          <children>
@@ -42,7 +44,7 @@
                         <Insets right="135.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="cbOption" onHidden="#chooseOption" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <ComboBox fx:id="cbOption" onHidden="#chooseOptionFlights" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <GridPane.margin>
                         <Insets left="155.0" />
                      </GridPane.margin>
@@ -50,7 +52,39 @@
                </children>
             </GridPane>
             <Pane id="redLineEastPane" prefHeight="200.0" prefWidth="200.0" />
-            <AnchorPane id="optionEastPane" />
+            <AnchorPane id="optionEastPane">
+               <children>
+                  <Label layoutX="15.0" layoutY="6.0" text="PORT DEPART" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox id="cbDate" fx:id="cbPortDepart" layoutX="16.0" layoutY="38.0" onAction="#chooseDepart" prefHeight="25.0" prefWidth="96.0" visibleRowCount="5" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0" />
+                  <Label layoutX="270.0" layoutY="5.0" text="DATE DEPART" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="141.0" layoutY="5.0" text="PORT DESTINATION" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="457.0" layoutY="5.0" text="TIME DEPART" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox id="cbDate" fx:id="cbPortDestination" layoutX="184.0" layoutY="25.0" onAction="#chooseDestin" prefHeight="25.0" prefWidth="96.0" visibleRowCount="5" AnchorPane.leftAnchor="190.0" AnchorPane.topAnchor="25.0" />
+                  <ComboBox id="cbDate" fx:id="cbTimeDepart" layoutX="488.0" layoutY="23.0" onAction="#chooseTime" prefHeight="25.0" prefWidth="96.0" visibleRowCount="5" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0" />
+                  <ComboBox id="cbDate" fx:id="cbDateDepart" layoutX="322.0" layoutY="25.0" onAction="#chooseDate" prefHeight="25.0" prefWidth="96.0" visibleRowCount="5" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="25.0" />
+                  <Button fx:id="btnRefresh" layoutX="261.0" layoutY="46.0" mnemonicParsing="false" onAction="#chooseRefresh" text="REFRESH" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
       <BorderPane id="scheduleEastPane" fx:id="tableBorderPane" prefHeight="200.0" prefWidth="200.0" />

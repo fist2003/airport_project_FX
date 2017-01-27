@@ -32,6 +32,6 @@
          </GridPane.margin>
       </PasswordField>
       <Button fx:id="btnConnect" mnemonicParsing="false" onAction="#chooseConnectBtn" text="CONNECT" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-      <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#test" text="CANCEL" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+      <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#chooseDemo" text="DEMO" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
    </children>
 </GridPane>

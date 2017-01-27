@@ -80,8 +80,9 @@ public class StartPageGUI extends Application {
     }
 
     @FXML
-    public void test(){
-        System.out.println("pressed");
+    public void chooseDemo(){
+        Stage stage = (Stage)btnCancel.getParent().getScene().getWindow();
+        new MainPage().displayMainPane(stage);
     }
 
 
