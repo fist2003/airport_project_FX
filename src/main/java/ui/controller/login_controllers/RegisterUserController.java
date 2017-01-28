@@ -25,8 +25,6 @@ public class RegisterUserController extends LoginPaneGUI{
     private UsersService instUsersService = new UsersService();
     private final String checkloginStr = "User with this login or email is already registered";
 
-    private final String lengthPassword = "Password must be min 5 characters length!";
-
     @FXML
     private Button btnOk;
     @FXML

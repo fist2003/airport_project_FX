@@ -180,6 +180,10 @@ public class OptionPaneUserController extends OptionPaneGUI {
             labelEmail.setText("");
             return true;
         }
+        else if (tfEmail.getText().length() > 49){
+            labelEmail.setText(getInputIsTooLong());
+            return false;
+        }
         else labelEmail.setText(getInputIsIncorect());
         return false;
     }

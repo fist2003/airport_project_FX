@@ -95,9 +95,9 @@ public class OptionPaneFlightController extends OptionPaneGUI {
         cbAirplanes.setItems(airplaneNumbersObservList);
         cbStatusFlight.setItems(statusObservList);
         cbGate.setItems(gatesObservList);
-        tfTimeDepart.setPromptText("hh-mm-ss");
-        tfTimeArrive.setPromptText("hh-mm-ss");
-        tfCurrentTime.setPromptText("hh-mm-ss");
+        tfTimeDepart.setPromptText("hh:mm:ss");
+        tfTimeArrive.setPromptText("hh:mm:ss");
+        tfCurrentTime.setPromptText("hh:mm:ss");
         dateDepart.setPromptText("yyyy-MM-dd");
         dateArrive.setPromptText("yyyy-MM-dd");
         if (getEntity() != null){
@@ -290,7 +290,7 @@ public class OptionPaneFlightController extends OptionPaneGUI {
     }
 
     private boolean isInputPriceCorrect(TextField textField,Label label){
-        if (!instEditDataService.isInputNumber(textField.getText())){
+        if ((!instEditDataService.isInputNumber(textField.getText()))||(textField.getText().length() > 10)){
             label.setText(getInputIsIncorect());
             return false;
         }

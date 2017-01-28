@@ -9,6 +9,7 @@ import javafx.util.StringConverter;
 import model.Passengers;
 import service.FlightsService;
 import service.PassengersService;
+import ui.controller.search_controllers.AutoCompleteComboBoxListener;
 import ui.view.OptionPaneGUI;
 
 import java.time.LocalDate;
@@ -75,6 +76,7 @@ public class OptionPanePassengerController extends OptionPaneGUI {
     public void initialize() {
         setupDatePicker(birthdayPicker);
         cbFlights.setItems(flightNumbersObservList);
+        new AutoCompleteComboBoxListener<>(cbFlights);
         cbSex.setItems(sexObservList);
         cbTicket.setItems(ticketObservList);
         birthdayPicker.setPromptText("yyyy-MM-dd");
@@ -227,7 +229,7 @@ public class OptionPanePassengerController extends OptionPaneGUI {
         boolean sex = isComboBoxValueChoosed(cbSex,labelSex);
         boolean ticket = isComboBoxValueChoosed(cbTicket,labelTicket);
         boolean freePlace = isFreePlace();
-        boolean[] arr = {last,first,passport,country,date,flight,sex,ticket};
+        boolean[] arr = {last,first,passport,country,date,flight,sex,ticket,freePlace};
         for (Boolean value:arr){
             if(!value){check = false;}
         }

@@ -130,7 +130,7 @@ public class OptionPaneGUI extends EditDataGUI {
         }
     }
 
-    protected void displayErrorDialog(String title){
+    public void displayErrorDialog(String title){
         Alert alert = new Alert(Alert.AlertType.WARNING, title, ButtonType.CLOSE);
         alert.showAndWait();
     }

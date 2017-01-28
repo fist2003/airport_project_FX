@@ -25,6 +25,7 @@ public class PricesAllController extends PricesGUI {
     public PricesAllController(){}
 
     private final String registerPassengerFXML = "/fxml/prices/registerPassenger.fxml";
+    private final String erorRegisterStr = "You must be logined!";
     private static Integer flight_id = null;
     private PricesSortService instPricesSortService = new PricesSortService();
 
@@ -108,24 +109,26 @@ public class PricesAllController extends PricesGUI {
 
     @FXML
     public void registerPassenger(){
-        EditDataService instEditDataServi = new EditDataService();
-        OptionPaneGUI insOptionPaneGUI = new OptionPaneGUI();
-        Flights instFlight = null;
-        tablePane = (BorderPane)eastPane.getChildren().get(1);
-        try {
-            TableView tableView = (TableView) tablePane.getChildren().get(0);
-            instFlight = (Flights) tableView.getSelectionModel().getSelectedItem();
-        }
-        catch (ClassCastException e){}
-        if (instFlight != null) {
-            flight_id = instFlight.getId();
-            boolean check = insOptionPaneGUI.displayOptionPaneInsert(instEditDataServi.getInsertNewOptionStr(),
-                    registerPassengerFXML);
-            if (check) {
-                loadPlanFlightPane();
+        if(isIsLogined()) {
+            EditDataService instEditDataServi = new EditDataService();
+            OptionPaneGUI insOptionPaneGUI = new OptionPaneGUI();
+            Flights instFlight = null;
+            tablePane = (BorderPane) eastPane.getChildren().get(1);
+            try {
+                TableView tableView = (TableView) tablePane.getChildren().get(0);
+                instFlight = (Flights) tableView.getSelectionModel().getSelectedItem();
+            } catch (ClassCastException e) {
             }
+            if (instFlight != null) {
+                flight_id = instFlight.getId();
+                boolean check = insOptionPaneGUI.displayOptionPaneInsert(instEditDataServi.getInsertNewOptionStr(),
+                        registerPassengerFXML);
+                if (check) {
+                    loadPlanFlightPane();
+                }
+            } else flight_id = null;
         }
-        else flight_id = null;
+        else new OptionPaneGUI().displayErrorDialog(erorRegisterStr);
     }
 
     @FXML

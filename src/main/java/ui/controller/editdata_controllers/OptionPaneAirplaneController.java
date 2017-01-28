@@ -12,6 +12,7 @@ import model.Airplanes;
 import model.Flights;
 import service.AirlinesService;
 import service.AirplanesService;
+import ui.controller.search_controllers.AutoCompleteComboBoxListener;
 import ui.view.OptionPaneGUI;
 
 import java.util.regex.Matcher;
@@ -69,6 +70,7 @@ public class OptionPaneAirplaneController extends OptionPaneGUI {
     @FXML
     public void initialize() {
         cbAirlines.setItems(airlinesNamesObservList);
+        new AutoCompleteComboBoxListener<>(cbAirlines);
         tfNumberISO.setPromptText("ISO112233");
         if (getEntity() != null){
             instAirplane = (Airplanes) getEntity();
