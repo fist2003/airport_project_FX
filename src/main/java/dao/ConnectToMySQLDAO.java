@@ -1,9 +1,5 @@
 package dao;
 
-/**
- * Created by ПК on 22.12.2016.
- */
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;

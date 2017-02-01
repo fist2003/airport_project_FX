@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import model.Airlines;
 import model.Entity;
 import service.EditDataSortService;
 import ui.view.EditDataGUI;

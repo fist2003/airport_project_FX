@@ -3,8 +3,6 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.time.LocalDate;
-
 /**
  * Created by ПК on 22.12.2016.
  */

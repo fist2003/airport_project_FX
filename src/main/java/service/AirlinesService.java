@@ -2,7 +2,6 @@ package service;
 
 import dao.AirlinesDAO;
 import model.Airlines;
-import model.Airplanes;
 
 import java.util.ArrayList;
 

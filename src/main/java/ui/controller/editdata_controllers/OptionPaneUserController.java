@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Users;
 import service.UsersService;
-import ui.view.LoginPaneGUI;
 import ui.view.OptionPaneGUI;
 
 /**

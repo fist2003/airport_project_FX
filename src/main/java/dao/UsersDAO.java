@@ -125,26 +125,5 @@ public class UsersDAO extends ConnectToMySQLDAO implements DAOInterface<Users> {
             return null;
         }
     }
-/*
-    public boolean[] checkUserDAO(Users user) {
-        boolean[] arrBool = {false, false, false};
-        String querry = "Select login,password,isAdmin from users where login = '" + user.getLogin() + "'";
-        try (Statement st = getConnection().createStatement()) {
-            st.execute((querry));
-            ResultSet rs = st.getResultSet();
-            if (rs.next()) {
-                arrBool[0] = true;
-                if (user.getPassword().equals(rs.getString("password"))) {
-                    arrBool[1] = true;
-                    if (rs.getBoolean("isAdmin")) {
-                        arrBool[2] = true;
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return arrBool;
-    }
-*/
+
 }

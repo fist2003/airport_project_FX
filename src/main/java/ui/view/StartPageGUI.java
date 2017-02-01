@@ -67,7 +67,7 @@ public class StartPageGUI extends Application {
             new PutStartDataService().putStartData();
         }
         else{
-            instConnectToMySqlDAO.connectToDB(password);
+                instConnectToMySqlDAO.connectToDB(password);
         }
         if (ConnectToMySQLDAO.getConnection() != null){
             Stage stage = (Stage)btnConnect.getParent().getScene().getWindow();

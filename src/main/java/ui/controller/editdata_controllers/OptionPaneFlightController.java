@@ -190,7 +190,7 @@ public class OptionPaneFlightController extends OptionPaneGUI {
         }
         if(isDeleteSelected){
             instFlight.setId(getEntity().getId());
-            if(instEditDataService.isSafeDelete(instEditDataService.getAirplanesTypeStr(),instFlight)){
+            if(instEditDataService.isSafeDelete(instEditDataService.getFlightsTypeStr(),instFlight)){
                 instFlightsService.deleteDataService((Flights) getEntity());
             }
             else {

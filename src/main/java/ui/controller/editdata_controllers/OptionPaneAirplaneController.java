@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Airplanes;
-import model.Flights;
 import service.AirlinesService;
 import service.AirplanesService;
 import ui.controller.search_controllers.AutoCompleteComboBoxListener;

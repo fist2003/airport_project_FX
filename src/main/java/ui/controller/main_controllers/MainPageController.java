@@ -27,6 +27,7 @@ public class MainPageController extends MainPage {
             eastPane = new FlightsGUI().getEastPane();
             bottomPane.getChildren().remove(1);
             bottomPane.getChildren().add(1,eastPane);
+            bottomPane.setHgrow(eastPane,Priority.ALWAYS);
         }
         else {
             new LoginPaneGUI().displayLoginScene();

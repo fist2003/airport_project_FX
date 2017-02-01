@@ -9,7 +9,6 @@ import model.Users;
 import service.EditDataService;
 import service.UsersService;
 import ui.controller.editdata_controllers.OptionPaneUserController;
-import ui.controller.main_controllers.MainPageController;
 import ui.view.LoginPaneGUI;
 import ui.view.MainPage;
 
